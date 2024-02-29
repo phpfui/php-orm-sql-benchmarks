@@ -1,0 +1,8 @@
+results.csv
+results.md
+vendor
+composer.lock
+*.db
+config.php
+*.sqlite
+.php-cs-fixer.cache
