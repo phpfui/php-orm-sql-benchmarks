@@ -87,13 +87,13 @@ class TestRunner
 		$this->currentResults = ['Date/Time' => \date('Y-m-d H:i:s'), 'System' => $system, 'PHP' => PHP_VERSION, 'Test' => $config->getNamespace(), 'Description' => $config->getDescription(), ];
 
 		echo "Running {$config->getNamespace()} -> {$config->getDescription()}\n";
+		$runTime = new \SOB\BaseLine();
 		$start = new \SOB\BaseLine();
 		$tester->init($config);
 		$this->setResult('Init', $start);
 
 		$iterations = $config->getIterations();
 
-		$runTime = new \SOB\BaseLine();
 		$timer = new \SOB\BaseLine();
 
 		for ($i = 1; $i <= $iterations; ++$i)
