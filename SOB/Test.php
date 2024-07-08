@@ -50,7 +50,7 @@ abstract class Test
 	/**
 	 * class must test one record with id=$id
 	 */
-	final public function testUpdate(object $employee, string $expected) : bool
+	public function testUpdate(object $employee, string $expected) : bool
 		{
 		if ($employee->last_name != $expected)
 			{
