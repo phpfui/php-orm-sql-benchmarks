@@ -22,7 +22,10 @@
         "illuminate/contracts": "*",
         "illuminate/events": "*",
         "doctrine/dbal": "*",
-        "compositephp/db": "^0.4.2"
+        "compositephp/db": "^0.4.2",
+        "nextras/orm": "dev-main",
+        "nextras/dbal": "dev-main",
+        "cakephp/cakephp": "dev-5.next"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",
