@@ -7,10 +7,15 @@ namespace SOB\PHPFUI\Record\Definition;
  *
  * @property ?string $comments MySQL type varchar(255)
  * @property int $inventory_transaction_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\InventoryTransaction $inventory_transaction related record
  * @property int $inventory_transaction_type_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\InventoryTransactionType $inventory_transaction_type related record
  * @property ?int $order_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Order $order related record
  * @property int $product_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Product $product related record
  * @property ?int $purchase_order_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\PurchaseOrder $purchase_order related record
  * @property int $quantity MySQL type integer
  * @property string $transaction_created_date MySQL type datetime
  * @property string $transaction_modified_date MySQL type datetime
@@ -22,15 +27,15 @@ abstract class InventoryTransaction extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'comments' => ['varchar(255)', 'string', 255, true, null, ],
+		'comments' => ['varchar(255)', 'string', 255, true, NULL, ],
 		'inventory_transaction_id' => ['integer', 'int', 0, false, ],
 		'inventory_transaction_type_id' => ['integer', 'int', 0, false, ],
-		'order_id' => ['integer', 'int', 0, true, null, ],
+		'order_id' => ['integer', 'int', 0, true, NULL, ],
 		'product_id' => ['integer', 'int', 0, false, ],
-		'purchase_order_id' => ['integer', 'int', 0, true, null, ],
+		'purchase_order_id' => ['integer', 'int', 0, true, NULL, ],
 		'quantity' => ['integer', 'int', 0, false, ],
-		'transaction_created_date' => ['datetime', 'string', 20, false, null, ],
-		'transaction_modified_date' => ['datetime', 'string', 20, false, null, ],
+		'transaction_created_date' => ['datetime', 'string', 20, false, NULL, ],
+		'transaction_modified_date' => ['datetime', 'string', 20, false, NULL, ],
 	];
 
 	/** @var array<string> */

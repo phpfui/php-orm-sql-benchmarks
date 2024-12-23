@@ -19,7 +19,7 @@ abstract class StringRecord extends \PHPFUI\ORM\Record
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
 		'stringDefaultNotNull' => ['varchar(100)', 'string', 100, false, 'default', ],
-		'stringDefaultNull' => ['varchar(100)', 'string', 100, true, null, ],
+		'stringDefaultNull' => ['varchar(100)', 'string', 100, true, NULL, ],
 		'stringDefaultNullable' => ['varchar(100)', 'string', 100, true, 'default', ],
 		'stringRecordId' => ['integer', 'int', 0, false, ],
 		'stringRequired' => ['varchar(100)', 'string', 100, false, ],

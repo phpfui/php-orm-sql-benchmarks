@@ -7,6 +7,7 @@ namespace SOB\PHPFUI\Record\Definition;
  *
  * @property ?string $setting_data MySQL type varchar(255)
  * @property int $setting_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Setting $setting related record
  */
 abstract class Setting extends \PHPFUI\ORM\Record
 	{
@@ -15,7 +16,7 @@ abstract class Setting extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'setting_data' => ['varchar(255)', 'string', 255, true, null, ],
+		'setting_data' => ['varchar(255)', 'string', 255, true, NULL, ],
 		'setting_id' => ['integer', 'int', 0, false, ],
 	];
 

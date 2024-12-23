@@ -7,10 +7,14 @@ namespace SOB\PHPFUI\Record\Definition;
  *
  * @property ?string $date_received MySQL type datetime
  * @property ?int $inventory_transaction_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\InventoryTransaction $inventory_transaction related record
  * @property int $posted_to_inventory MySQL type integer
  * @property ?int $product_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Product $product related record
  * @property int $purchase_order_detail_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\PurchaseOrderDetail $purchase_order_detail related record
  * @property int $purchase_order_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\PurchaseOrder $purchase_order related record
  * @property float $quantity MySQL type decimal(18,4)
  * @property float $unit_cost MySQL type decimal(19,4)
  */
@@ -21,10 +25,10 @@ abstract class PurchaseOrderDetail extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'date_received' => ['datetime', 'string', 20, true, null, ],
-		'inventory_transaction_id' => ['integer', 'int', 0, true, null, ],
+		'date_received' => ['datetime', 'string', 20, true, NULL, ],
+		'inventory_transaction_id' => ['integer', 'int', 0, true, NULL, ],
 		'posted_to_inventory' => ['integer', 'int', 0, false, 0, ],
-		'product_id' => ['integer', 'int', 0, true, null, ],
+		'product_id' => ['integer', 'int', 0, true, NULL, ],
 		'purchase_order_detail_id' => ['integer', 'int', 0, false, ],
 		'purchase_order_id' => ['integer', 'int', 0, false, ],
 		'quantity' => ['decimal(18,4)', 'float', 18, false, ],

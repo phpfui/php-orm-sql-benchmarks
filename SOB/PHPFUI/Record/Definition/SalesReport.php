@@ -19,10 +19,10 @@ abstract class SalesReport extends \PHPFUI\ORM\Record
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
 		'default' => ['integer', 'int', 0, false, 0, ],
-		'display' => ['varchar(50)', 'string', 50, true, null, ],
-		'filter_row_source' => ['longtext', 'string', 4294967295, true, null, ],
+		'display' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'filter_row_source' => ['longtext', 'string', 4294967295, true, NULL, ],
 		'group_by' => ['varchar(50)', 'string', 50, false, ],
-		'title' => ['varchar(50)', 'string', 50, true, null, ],
+		'title' => ['varchar(50)', 'string', 50, true, NULL, ],
 	];
 
 	/** @var array<string> */

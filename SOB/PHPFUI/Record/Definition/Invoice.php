@@ -9,7 +9,9 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property ?string $due_date MySQL type datetime
  * @property string $invoice_date MySQL type datetime
  * @property int $invoice_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Invoice $invoice related record
  * @property ?int $order_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Order $order related record
  * @property ?float $shipping MySQL type decimal(19,4)
  * @property ?float $tax MySQL type decimal(19,4)
  */
@@ -20,13 +22,13 @@ abstract class Invoice extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'amount_due' => ['decimal(19,4)', 'float', 19, true, 0, ],
-		'due_date' => ['datetime', 'string', 20, true, null, ],
-		'invoice_date' => ['datetime', 'string', 20, false, null, ],
+		'amount_due' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
+		'due_date' => ['datetime', 'string', 20, true, NULL, ],
+		'invoice_date' => ['datetime', 'string', 20, false, NULL, ],
 		'invoice_id' => ['integer', 'int', 0, false, ],
-		'order_id' => ['integer', 'int', 0, true, null, ],
-		'shipping' => ['decimal(19,4)', 'float', 19, true, 0, ],
-		'tax' => ['decimal(19,4)', 'float', 19, true, 0, ],
+		'order_id' => ['integer', 'int', 0, true, NULL, ],
+		'shipping' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
+		'tax' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
 	];
 
 	/** @var array<string> */

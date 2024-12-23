@@ -2,7 +2,7 @@
 
 namespace SOB;
 
-class Schema
+class SchemaLoader
 	{
 
 	private static \PHPFUI\ORM\PDOInstance $pdo;

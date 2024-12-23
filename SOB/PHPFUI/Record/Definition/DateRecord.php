@@ -21,12 +21,12 @@ abstract class DateRecord extends \PHPFUI\ORM\Record
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
 		'dateDefaultNotNull' => ['date', 'string', 10, false, '2000-01-02', ],
-		'dateDefaultNull' => ['date', 'string', 10, true, null, ],
+		'dateDefaultNull' => ['date', 'string', 10, true, NULL, ],
 		'dateDefaultNullable' => ['date', 'string', 10, true, '2000-01-02', ],
 		'dateRecordId' => ['integer', 'int', 0, false, ],
 		'dateRequired' => ['date', 'string', 10, false, ],
-		'timestampDefaultCurrentNotNull' => ['timestamp', 'string', 20, false, null, ],
-		'timestampDefaultCurrentNullable' => ['timestamp', 'string', 20, true, null, ],
+		'timestampDefaultCurrentNotNull' => ['timestamp', 'string', 20, false, NULL, ],
+		'timestampDefaultCurrentNullable' => ['timestamp', 'string', 20, true, NULL, ],
 	];
 
 	/** @var array<string> */

@@ -2,7 +2,7 @@
 
 include __DIR__ . '/../../../vendor/autoload.php';
 
-$schema = new \SOB\Schema();
+$schema = new \SOB\SchemaLoader();
 
 echo "Generate Record Models\n\n";
 

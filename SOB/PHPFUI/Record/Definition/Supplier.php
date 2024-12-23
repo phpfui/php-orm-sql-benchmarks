@@ -21,6 +21,7 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property ?string $notes MySQL type longtext
  * @property ?string $state_province MySQL type varchar(50)
  * @property int $supplier_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\Supplier $supplier related record
  * @property ?string $web_page MySQL type longtext
  * @property ?string $zip_postal_code MySQL type varchar(15)
  */
@@ -31,24 +32,24 @@ abstract class Supplier extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'address' => ['longtext', 'string', 4294967295, true, null, ],
-		'attachments' => ['longblob', 'string', 0, true, null, ],
-		'business_phone' => ['varchar(25)', 'string', 25, true, null, ],
-		'city' => ['varchar(50)', 'string', 50, true, null, ],
-		'company' => ['varchar(50)', 'string', 50, true, null, ],
-		'country_region' => ['varchar(50)', 'string', 50, true, null, ],
-		'email_address' => ['varchar(50)', 'string', 50, true, null, ],
-		'fax_number' => ['varchar(25)', 'string', 25, true, null, ],
-		'first_name' => ['varchar(50)', 'string', 50, true, null, ],
-		'home_phone' => ['varchar(25)', 'string', 25, true, null, ],
-		'job_title' => ['varchar(50)', 'string', 50, true, null, ],
-		'last_name' => ['varchar(50)', 'string', 50, true, null, ],
-		'mobile_phone' => ['varchar(25)', 'string', 25, true, null, ],
-		'notes' => ['longtext', 'string', 4294967295, true, null, ],
-		'state_province' => ['varchar(50)', 'string', 50, true, null, ],
+		'address' => ['longtext', 'string', 4294967295, true, NULL, ],
+		'attachments' => ['longblob', 'string', 0, true, NULL, ],
+		'business_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
+		'city' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'company' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'country_region' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'email_address' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'fax_number' => ['varchar(25)', 'string', 25, true, NULL, ],
+		'first_name' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'home_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
+		'job_title' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'last_name' => ['varchar(50)', 'string', 50, true, NULL, ],
+		'mobile_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
+		'notes' => ['longtext', 'string', 4294967295, true, NULL, ],
+		'state_province' => ['varchar(50)', 'string', 50, true, NULL, ],
 		'supplier_id' => ['integer', 'int', 0, false, ],
-		'web_page' => ['longtext', 'string', 4294967295, true, null, ],
-		'zip_postal_code' => ['varchar(15)', 'string', 15, true, null, ],
+		'web_page' => ['longtext', 'string', 4294967295, true, NULL, ],
+		'zip_postal_code' => ['varchar(15)', 'string', 15, true, NULL, ],
 	];
 
 	/** @var array<string> */

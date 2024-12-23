@@ -15,7 +15,7 @@ abstract class Privilege extends \PHPFUI\ORM\Record
 	/** @var array<string, array<mixed>> */
 	protected static array $fields = [
 		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'privilege' => ['varchar(50)', 'string', 50, true, null, ],
+		'privilege' => ['varchar(50)', 'string', 50, true, NULL, ],
 		'privilege_id' => ['integer', 'int', 0, false, ],
 	];
 
