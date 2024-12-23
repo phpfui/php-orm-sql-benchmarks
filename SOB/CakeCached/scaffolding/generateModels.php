@@ -2,36 +2,7 @@
 
 include __DIR__ . '/../../../vendor/autoload.php';
 
-$pdo = new \PHPFUI\ORM\PDOInstance('sqlite::memory:');
-\PHPFUI\ORM::addConnection($pdo);
-
-$lines = \file(__DIR__ . '/../../../northwind/northwind-schema.sqlite');
-
-$sql = '';
-
-foreach ($lines as $line)
-	{
-
-	// Ignoring comments from the SQL script
-	if (\str_starts_with((string)$line, '--') || '' == $line)
-		{
-		continue;
-		}
-
-	$sql .= $line;
-
-	if (\str_ends_with(\trim((string)$line), ';'))
-		{
-		\PHPFUI\ORM::execute($sql);
-		$lastError = \PHPFUI\ORM::getLastError();
-
-		if ($lastError)
-			{
-			throw new \Exception($lastError . ' SQL: ' . $sql);
-			}
-		$sql = '';
-		}
-	} // end foreach
+$schema = new \SOB\Schema();
 
 echo "Generate Record Models\n\n";
 
