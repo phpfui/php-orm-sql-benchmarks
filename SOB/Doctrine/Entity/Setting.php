@@ -5,39 +5,24 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="setting")
  */
 class Setting
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $settingId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int setting_id;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $settingData;
+	/**
+	 * @ORM\Column(type=string, length=255, nullable=true)
+	 */
+	public ?string setting_data = NULL;
 
-    // Getters and setters
 
-    public function getSettingId(): ?int
-    {
-        return $this->settingId;
-    }
-
-    public function getSettingData(): ?string
-    {
-        return $this->settingData;
-    }
-
-    public function setSettingData(?string $settingData): self
-    {
-        $this->settingData = $settingData;
-
-        return $this;
-    }
-}
+	}

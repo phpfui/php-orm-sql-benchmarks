@@ -5,74 +5,114 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="order")
  */
 class Order
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $orderId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int order_id;
 
-    /** @ORM\ManyToOne(targetEntity="Employee") */
-    private $employee;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int employee_id = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="Customer") */
-    private $customer;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int customer_id = NULL;
 
-    /** @ORM\Column(type="datetime") */
-    private $orderDate;
+	/**
+	 * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+	 */
+	public string order_date;
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $shippedDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string shipped_date = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="Shipper") */
-    private $shipper;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int shipper_id = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $shipName;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string ship_name = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $shipAddress;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string ship_address = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $shipCity;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string ship_city = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $shipStateProvince;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string ship_state_province = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $shipZipPostalCode;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string ship_zip_postal_code = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $shipCountryRegion;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string ship_country_region = NULL;
 
-    /** @ORM\Column(type="decimal", precision=19, scale=4, nullable=true) */
-    private $shippingFee;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float shipping_fee = '0.0000';
 
-    /** @ORM\Column(type="decimal", precision=19, scale=4, nullable=true) */
-    private $taxes;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float taxes = '0.0000';
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $paymentType;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string payment_type = NULL;
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $paidDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string paid_date = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $notes;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string notes = NULL;
 
-    /** @ORM\Column(type="float", nullable=true) */
-    private $taxRate;
+	/**
+	 * @ORM\Column(type="double", options={"default": "0"}, nullable=true)
+	 */
+	public ?float tax_rate = '0';
 
-    /** @ORM\ManyToOne(targetEntity="OrderTaxStatus") */
-    private $orderTaxStatus;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int order_tax_status_id = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="OrderStatus") */
-    private $orderStatus;
+	/**
+	 * @ORM\Column(type="integer", options={"default": "0"}, nullable=true)
+	 */
+	public ?int order_status_id = '0';
 
-    // Getters and setters...
-}
+
+	}

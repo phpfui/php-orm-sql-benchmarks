@@ -5,45 +5,23 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="purchase_order_status")
  */
 class PurchaseOrderStatus
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     */
-    private $purchaseOrderStatusId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\Column(type="integer")
+	 */
+	public int purchase_order_status_id;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $purchaseOrderStatusName;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string purchase_order_status_name = NULL;
 
-    // Getters and setters
 
-    public function getPurchaseOrderStatusId(): ?int
-    {
-        return $this->purchaseOrderStatusId;
-    }
-
-    public function setPurchaseOrderStatusId(int $purchaseOrderStatusId): self
-    {
-        $this->purchaseOrderStatusId = $purchaseOrderStatusId;
-
-        return $this;
-    }
-
-    public function getPurchaseOrderStatusName(): ?string
-    {
-        return $this->purchaseOrderStatusName;
-    }
-
-    public function setPurchaseOrderStatusName(?string $purchaseOrderStatusName): self
-    {
-        $this->purchaseOrderStatusName = $purchaseOrderStatusName;
-
-        return $this;
-    }
-}
+	}

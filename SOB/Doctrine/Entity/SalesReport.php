@@ -5,96 +5,38 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="sales_report")
  */
 class SalesReport
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="string", length=50)
-     */
-    private $groupBy;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\Column(type=string, length=50)
+	 */
+	public string group_by;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $display;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string display = NULL;
 
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $title;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string title = NULL;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $filterRowSource;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string filter_row_source = NULL;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $default;
+	/**
+	 * @ORM\Column(type="integer", options={"default": "0"})
+	 */
+	public int default = '0';
 
-    // Getters and setters
 
-    public function getGroupBy(): ?string
-    {
-        return $this->groupBy;
-    }
-
-    public function setGroupBy(string $groupBy): self
-    {
-        $this->groupBy = $groupBy;
-
-        return $this;
-    }
-
-    public function getDisplay(): ?string
-    {
-        return $this->display;
-    }
-
-    public function setDisplay(?string $display): self
-    {
-        $this->display = $display;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getFilterRowSource(): ?string
-    {
-        return $this->filterRowSource;
-    }
-
-    public function setFilterRowSource(?string $filterRowSource): self
-    {
-        $this->filterRowSource = $filterRowSource;
-
-        return $this;
-    }
-
-    public function getDefault(): ?int
-    {
-        return $this->default;
-    }
-
-    public function setDefault(int $default): self
-    {
-        $this->default = $default;
-
-        return $this;
-    }
-}
+	}

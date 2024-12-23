@@ -8,19 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
  *
  * @ORM\Entity
- * @ORM\Table(name="product_supplier")
+ * @ORM\Table(name="~TABLE~")
  */
-class ProductSupplier
+class ~CLASS~
 	{
-	/**
-	 * @ORM\Column(type="integer")
-	 */
-	public int product_id;
-
-	/**
-	 * @ORM\Column(type="integer")
-	 */
-	public int supplier_id;
-
-
+~FIELDS~
 	}

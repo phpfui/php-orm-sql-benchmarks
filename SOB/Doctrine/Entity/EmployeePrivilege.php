@@ -8,20 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
  * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
  *
  * @ORM\Entity
- * @ORM\Table(name="inventory_transaction_type")
+ * @ORM\Table(name="employee_privilege")
  */
-class InventoryTransactionType
+class EmployeePrivilege
 	{
 	/**
-	 * @ORM\{Id}
 	 * @ORM\Column(type="integer")
 	 */
-	public int inventory_transaction_type_id;
+	public int employee_id;
 
 	/**
-	 * @ORM\Column(type=string, length=50)
+	 * @ORM\Column(type="integer")
 	 */
-	public string inventory_transaction_type_name;
+	public int privilege_id;
 
 
 	}

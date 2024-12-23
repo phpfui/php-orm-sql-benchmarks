@@ -5,73 +5,34 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="image")
  */
 class Image
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $imageId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int image_id;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $imageableId;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int imageable_id;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $imageableType;
+	/**
+	 * @ORM\Column(type=string, length=128, nullable=true)
+	 */
+	public ?string imageable_type;
 
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $path;
+	/**
+	 * @ORM\Column(type=string, length=128)
+	 */
+	public string path;
 
-    // Getters and setters
 
-    public function getImageId(): ?int
-    {
-        return $this->imageId;
-    }
-
-    public function getImageableId(): ?int
-    {
-        return $this->imageableId;
-    }
-
-    public function setImageableId(?int $imageableId): self
-    {
-        $this->imageableId = $imageableId;
-
-        return $this;
-    }
-
-    public function getImageableType(): ?string
-    {
-        return $this->imageableType;
-    }
-
-    public function setImageableType(string $imageableType): self
-    {
-        $this->imageableType = $imageableType;
-
-        return $this;
-    }
-
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    public function setPath(string $path): self
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-}
+	}

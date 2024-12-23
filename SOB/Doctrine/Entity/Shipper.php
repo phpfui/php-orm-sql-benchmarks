@@ -5,68 +5,104 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="shipper")
  */
 class Shipper
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $shipperId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int shipper_id;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $company;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string company = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $lastName;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string last_name = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $firstName;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string first_name = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $emailAddress;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string email_address = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $jobTitle;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string job_title = NULL;
 
-    /** @ORM\Column(type="string", length=25, nullable=true) */
-    private $businessPhone;
+	/**
+	 * @ORM\Column(type=string, length=25, nullable=true)
+	 */
+	public ?string business_phone = NULL;
 
-    /** @ORM\Column(type="string", length=25, nullable=true) */
-    private $homePhone;
+	/**
+	 * @ORM\Column(type=string, length=25, nullable=true)
+	 */
+	public ?string home_phone = NULL;
 
-    /** @ORM\Column(type="string", length=25, nullable=true) */
-    private $mobilePhone;
+	/**
+	 * @ORM\Column(type=string, length=25, nullable=true)
+	 */
+	public ?string mobile_phone = NULL;
 
-    /** @ORM\Column(type="string", length=25, nullable=true) */
-    private $faxNumber;
+	/**
+	 * @ORM\Column(type=string, length=25, nullable=true)
+	 */
+	public ?string fax_number = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $address;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string address = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $city;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string city = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $stateProvince;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string state_province = NULL;
 
-    /** @ORM\Column(type="string", length=15, nullable=true) */
-    private $zipPostalCode;
+	/**
+	 * @ORM\Column(type=string, length=15, nullable=true)
+	 */
+	public ?string zip_postal_code = NULL;
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $countryRegion;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string country_region = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $webPage;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string web_page = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $notes;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string notes = NULL;
 
-    /** @ORM\Column(type="blob", nullable=true) */
-    private $attachments;
+	/**
+	 * @ORM\Column(type="longblob", nullable=true)
+	 */
+	public ?string attachments = NULL;
 
-    // Getters and setters...
-}
+
+	}

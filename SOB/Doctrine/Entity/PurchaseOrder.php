@@ -5,62 +5,94 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="purchase_order")
  */
 class PurchaseOrder
-{
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $purchaseOrderId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int purchase_order_id;
 
-    /** @ORM\ManyToOne(targetEntity="Supplier") */
-    private $supplier;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int supplier_id = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="Employee") */
-    private $createdBy;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int created_by = NULL;
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $submittedDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string submitted_date = NULL;
 
-    /** @ORM\Column(type="datetime") */
-    private $creationDate;
+	/**
+	 * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+	 */
+	public string creation_date;
 
-    /** @ORM\ManyToOne(targetEntity="PurchaseOrderStatus") */
-    private $purchaseOrderStatus;
+	/**
+	 * @ORM\Column(type="integer", options={"default": "0"}, nullable=true)
+	 */
+	public ?int purchase_order_status_id = '0';
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $expectedDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string expected_date = NULL;
 
-    /** @ORM\Column(type="decimal", precision=19, scale=4) */
-    private $shippingFee;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"})
+	 */
+	public float shipping_fee = '0.0000';
 
-    /** @ORM\Column(type="decimal", precision=19, scale=4) */
-    private $taxes;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"})
+	 */
+	public float taxes = '0.0000';
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $paymentDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string payment_date = NULL;
 
-    /** @ORM\Column(type="decimal", precision=19, scale=4, nullable=true) */
-    private $paymentAmount;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float payment_amount = '0.0000';
 
-    /** @ORM\Column(type="string", length=50, nullable=true) */
-    private $paymentMethod;
+	/**
+	 * @ORM\Column(type=string, length=50, nullable=true)
+	 */
+	public ?string payment_method = NULL;
 
-    /** @ORM\Column(type="text", nullable=true) */
-    private $notes;
+	/**
+	 * @ORM\Column(type="longtext", nullable=true)
+	 */
+	public ?string notes = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="Employee") */
-    private $approvedBy;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int approved_by = NULL;
 
-    /** @ORM\Column(type="datetime", nullable=true) */
-    private $approvedDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string approved_date = NULL;
 
-    /** @ORM\ManyToOne(targetEntity="Employee") */
-    private $submittedBy;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int submitted_by = NULL;
 
-    // Getters and setters...
-}
+
+	}

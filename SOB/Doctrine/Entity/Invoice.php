@@ -5,124 +5,49 @@ namespace SOB\Doctrine\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
+ *
  * @ORM\Entity
  * @ORM\Table(name="invoice")
  */
 class Invoice
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    private $invoiceId;
+	{
+	/**
+	 * @ORM\{Id}
+	 * @ORM\{GeneratedValue(strategy="AUTO")}
+	 * @ORM\Column(type="integer")
+	 */
+	public int invoice_id;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $orderId;
+	/**
+	 * @ORM\Column(type="integer", nullable=true)
+	 */
+	public ?int order_id = NULL;
 
-    /**
-     * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
-     */
-    private $invoiceDate;
+	/**
+	 * @ORM\Column(type="datetime", options={"default": "CURRENT_TIMESTAMP"})
+	 */
+	public string invoice_date;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $dueDate;
+	/**
+	 * @ORM\Column(type="datetime", nullable=true)
+	 */
+	public ?string due_date = NULL;
 
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4, nullable=true, options={"default": "0.0000"})
-     */
-    private $tax;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float tax = '0.0000';
 
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4, nullable=true, options={"default": "0.0000"})
-     */
-    private $shipping;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float shipping = '0.0000';
 
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4, nullable=true, options={"default": "0.0000"})
-     */
-    private $amountDue;
+	/**
+	 * @ORM\Column(type=decimal, precision=19, scale=4, options={"default": "0.0000"}, nullable=true)
+	 */
+	public ?float amount_due = '0.0000';
 
-    // Getters and setters
 
-    public function getInvoiceId(): ?int
-    {
-        return $this->invoiceId;
-    }
-
-    public function getOrderId(): ?int
-    {
-        return $this->orderId;
-    }
-
-    public function setOrderId(?int $orderId): self
-    {
-        $this->orderId = $orderId;
-
-        return $this;
-    }
-
-    public function getInvoiceDate(): ?\DateTimeInterface
-    {
-        return $this->invoiceDate;
-    }
-
-    public function setInvoiceDate(\DateTimeInterface $invoiceDate): self
-    {
-        $this->invoiceDate = $invoiceDate;
-
-        return $this;
-    }
-
-    public function getDueDate(): ?\DateTimeInterface
-    {
-        return $this->dueDate;
-    }
-
-    public function setDueDate(?\DateTimeInterface $dueDate): self
-    {
-        $this->dueDate = $dueDate;
-
-        return $this;
-    }
-
-    public function getTax(): ?string
-    {
-        return $this->tax;
-    }
-
-    public function setTax(?string $tax): self
-    {
-        $this->tax = $tax;
-
-        return $this;
-    }
-
-    public function getShipping(): ?string
-    {
-        return $this->shipping;
-    }
-
-    public function setShipping(?string $shipping): self
-    {
-        $this->shipping = $shipping;
-
-        return $this;
-    }
-
-    public function getAmountDue(): ?string
-    {
-        return $this->amountDue;
-    }
-
-    public function setAmountDue(?string $amountDue): self
-    {
-        $this->amountDue = $amountDue;
-
-        return $this;
-    }
-}
+	}
