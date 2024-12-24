@@ -64,12 +64,12 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 	$orm = [];
 	if ($field->primaryKey)
 		{
-		$orm[] = 'Id';
+		$orm[] = '\Doctrine\ORM\Mapping\Id';
 		}
 
 	if ($field->autoIncrement)
 		{
-		$orm[] = 'GeneratedValue(strategy="AUTO")';
+		$orm[] = '\Doctrine\ORM\Mapping\GeneratedValue(strategy: "AUTO")';
 		}
 
 	$descriptions = [];
@@ -82,23 +82,23 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 		}
 	if (str_starts_with($type, 'decimal'))
 		{
-		$descriptions['type'] = 'decimal';
+		$descriptions['type'] = '"decimal"';
 		$descriptions['precision'] = $parts[0];
 		$descriptions['scale'] = $parts[1];
 		}
 	elseif (str_starts_with($type, 'varchar'))
 		{
-		$descriptions['type'] = 'string';
+		$descriptions['type'] = '"string"';
 		$descriptions['length'] = $parts[0];
 		}
 	else
 		{
-		$descriptions['type'] = '"' . $type . '"';
+		$descriptions['type'] = '"' . str_replace('long', '', $type) . '"';
 		}
 
 	if ($field->defaultValue && $field->defaultValue !== 'NULL')
 		{
-		$descriptions['options'] = '{"default": "' . str_replace(['"', "'"], '', $field->defaultValue) . '"}';
+		$descriptions['options'] = '["default" => "' . str_replace(['"', "'"], '', $field->defaultValue) . '"]';
 		}
 
 	$nullable = '';
@@ -108,27 +108,35 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 		$nullable = '?';
 		}
 
-	$text = "\t/**\n";
+	$text = '';
 	foreach ($orm as $ormType)
 		{
-		$text .= "\t * @ORM\{$ormType}\n";
+		$text .= "\t#[{$ormType}]\n";
 		}
-	$text .= "\t * @ORM\Column(";
+	$text .= "\t#[\Doctrine\ORM\Mapping\Column(";
 	$comma = '';
 	foreach ($descriptions as $descriptionType => $value)
 		{
-		$text .= $comma . $descriptionType . '=' . $value;
+		$text .= $comma . $descriptionType . ': ' . $value;
 		$comma = ', ';
 		}
-	$text .= ")\n";
-	$text .= "\t */\n";
+	$text .= ")]\n";
 	$phptype = getPHPType($field->type);
 	$phpDefault = '';
 	if ($field->defaultValue && $field->defaultValue !== 'CURRENT_TIMESTAMP')
 		{
-		$phpDefault = ' = ' . $field->defaultValue;
+		$defaultValue = str_replace(['"', "'"], '', $field->defaultValue);
+		if (is_numeric($defaultValue))
+			{
+			$phpDefault = ' = ' . $defaultValue;
+			}
+		else
+			{
+			$phpDefault = ' = ' . $field->defaultValue;
+			}
 		}
-	$text .= "\tpublic {$nullable}{$phptype} {$field->name}{$phpDefault};\n\n";
+	$dollar = '$';
+	$text .= "\tpublic {$nullable}{$phptype} {$dollar}{$field->name}{$phpDefault};\n\n";
 
 	return $text;
 	}

@@ -96,6 +96,8 @@ class TestRunner
 
 		$timer = new \SOB\BaseLine();
 
+		echo "Executing insert test\n";
+
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
 			$tester->insert($i);
@@ -103,6 +105,8 @@ class TestRunner
 		$this->setResult('Insert', $timer);
 
 		$timer = new \SOB\BaseLine();
+
+		echo "Executing update test\n";
 
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
@@ -129,6 +133,8 @@ class TestRunner
 
 		$timer = new \SOB\BaseLine();
 
+		echo "Executing random read test\n";
+
 		foreach ($this->random as $i)
 			{
 			$expected = $i + $this->updateOffset;
@@ -137,6 +143,8 @@ class TestRunner
 		$this->setResult('Random Read', $timer);
 
 		$timer = new \SOB\BaseLine();
+
+		echo "Executing delete test\n";
 
 		for ($i = 1; $i <= $iterations; ++$i)
 			{

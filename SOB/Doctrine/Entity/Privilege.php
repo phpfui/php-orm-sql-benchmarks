@@ -6,23 +6,18 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
- *
- * @ORM\Entity
- * @ORM\Table(name="privilege")
  */
+#[\Doctrine\ORM\Mapping\Entity]
+#[\Doctrine\ORM\Mapping\Table(name: "privilege")]
 class Privilege
 	{
-	/**
-	 * @ORM\{Id}
-	 * @ORM\{GeneratedValue(strategy="AUTO")}
-	 * @ORM\Column(type="integer")
-	 */
-	public int privilege_id;
+	#[\Doctrine\ORM\Mapping\Id]
+	#[\Doctrine\ORM\Mapping\GeneratedValue(strategy: "AUTO")]
+	#[\Doctrine\ORM\Mapping\Column(type: "integer")]
+	public int $privilege_id;
 
-	/**
-	 * @ORM\Column(type=string, length=50, nullable=true)
-	 */
-	public ?string privilege = NULL;
+	#[\Doctrine\ORM\Mapping\Column(type: "string", length: 50, nullable: true)]
+	public ?string $privilege = NULL;
 
 
 	}

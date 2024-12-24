@@ -6,10 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This code is automatically generated.  See SOB\Doctrine\scaffolding\generateModels.php.  Do not update by hand.
- *
- * @ORM\Entity
- * @ORM\Table(name="~TABLE~")
  */
+#[\Doctrine\ORM\Mapping\Entity]
+#[\Doctrine\ORM\Mapping\Table(name: "~TABLE~")]
 class ~CLASS~
 	{
 ~FIELDS~

@@ -4,13 +4,9 @@ namespace SOB;
 
 class SchemaLoader
 	{
-
-	private static \PHPFUI\ORM\PDOInstance $pdo;
-
 	public function __construct()
 		{
-		static::$pdo = new \PHPFUI\ORM\PDOInstance('sqlite::memory:');
-		\PHPFUI\ORM::addConnection(static::$pdo);
+		\PHPFUI\ORM::addConnection(new \PHPFUI\ORM\PDOInstance('sqlite::memory:'));
 
 		$lines = \file(__DIR__ . '/../northwind/northwind-schema.sqlite');
 
@@ -40,5 +36,4 @@ class SchemaLoader
 				}
 			} // end foreach
 		}
-
 	}
