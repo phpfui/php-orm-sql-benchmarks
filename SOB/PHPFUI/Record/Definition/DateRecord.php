@@ -17,20 +17,29 @@ abstract class DateRecord extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'dateDefaultNotNull' => ['date', 'string', 10, false, '2000-01-02', ],
-		'dateDefaultNull' => ['date', 'string', 10, true, NULL, ],
-		'dateDefaultNullable' => ['date', 'string', 10, true, '2000-01-02', ],
-		'dateRecordId' => ['integer', 'int', 0, false, ],
-		'dateRequired' => ['date', 'string', 10, false, ],
-		'timestampDefaultCurrentNotNull' => ['timestamp', 'string', 20, false, NULL, ],
-		'timestampDefaultCurrentNullable' => ['timestamp', 'string', 20, true, NULL, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['dateRecordId', ];
 
 	protected static string $table = 'dateRecord';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'dateDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, '2000-01-02', ),
+			'dateDefaultNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, null, ),
+			'dateDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, '2000-01-02', ),
+			'dateRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'dateRequired' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, ),
+			'timestampDefaultCurrentNotNull' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+			'timestampDefaultCurrentNullable' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
+		];
+			}
+
+		return $this;
+		}
 	}

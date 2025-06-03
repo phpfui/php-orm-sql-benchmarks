@@ -14,15 +14,24 @@ abstract class EmployeePrivilege extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = false;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'employee_id' => ['integer', 'int', 0, false, ],
-		'privilege_id' => ['integer', 'int', 0, false, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = [];
 
 	protected static string $table = 'employee_privilege';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'employee_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'privilege_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+		];
+			}
+
+		return $this;
+		}
 	}

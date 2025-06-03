@@ -15,18 +15,27 @@ abstract class StringRecord extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'stringDefaultNotNull' => ['varchar(100)', 'string', 100, false, 'default', ],
-		'stringDefaultNull' => ['varchar(100)', 'string', 100, true, NULL, ],
-		'stringDefaultNullable' => ['varchar(100)', 'string', 100, true, 'default', ],
-		'stringRecordId' => ['integer', 'int', 0, false, ],
-		'stringRequired' => ['varchar(100)', 'string', 100, false, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['stringRecordId', ];
 
 	protected static string $table = 'stringRecord';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'stringDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, 'default', ),
+			'stringDefaultNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, null, ),
+			'stringDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, 'default', ),
+			'stringRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'stringRequired' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, ),
+		];
+			}
+
+		return $this;
+		}
 	}

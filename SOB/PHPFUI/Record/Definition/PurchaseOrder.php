@@ -29,29 +29,38 @@ abstract class PurchaseOrder extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'approved_by' => ['integer', 'int', 0, true, NULL, ],
-		'approved_date' => ['datetime', 'string', 20, true, NULL, ],
-		'created_by' => ['integer', 'int', 0, true, NULL, ],
-		'creation_date' => ['datetime', 'string', 20, false, NULL, ],
-		'expected_date' => ['datetime', 'string', 20, true, NULL, ],
-		'notes' => ['longtext', 'string', 4294967295, true, NULL, ],
-		'payment_amount' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
-		'payment_date' => ['datetime', 'string', 20, true, NULL, ],
-		'payment_method' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'purchase_order_id' => ['integer', 'int', 0, false, ],
-		'purchase_order_status_id' => ['integer', 'int', 0, true, 0, ],
-		'shipping_fee' => ['decimal(19,4)', 'float', 19, false, 0.0000, ],
-		'submitted_by' => ['integer', 'int', 0, true, NULL, ],
-		'submitted_date' => ['datetime', 'string', 20, true, NULL, ],
-		'supplier_id' => ['integer', 'int', 0, true, NULL, ],
-		'taxes' => ['decimal(19,4)', 'float', 19, false, 0.0000, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['purchase_order_id', ];
 
 	protected static string $table = 'purchase_order';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'approved_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'approved_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'created_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'creation_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+			'expected_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+			'payment_amount' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+			'payment_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'payment_method' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'purchase_order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
+			'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
+			'submitted_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'submitted_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'supplier_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
+		];
+			}
+
+		return $this;
+		}
 	}

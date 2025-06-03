@@ -15,18 +15,27 @@ abstract class SalesReport extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = false;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'default' => ['integer', 'int', 0, false, 0, ],
-		'display' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'filter_row_source' => ['longtext', 'string', 4294967295, true, NULL, ],
-		'group_by' => ['varchar(50)', 'string', 50, false, ],
-		'title' => ['varchar(50)', 'string', 50, true, NULL, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['group_by', ];
 
 	protected static string $table = 'sales_report';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'default' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, 0, ),
+			'display' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'filter_row_source' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+			'group_by' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
+			'title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+		];
+			}
+
+		return $this;
+		}
 	}

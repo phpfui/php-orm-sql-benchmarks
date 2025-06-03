@@ -12,15 +12,24 @@ abstract class Privilege extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'privilege' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'privilege_id' => ['integer', 'int', 0, false, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['privilege_id', ];
 
 	protected static string $table = 'privilege';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'privilege' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'privilege_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+		];
+			}
+
+		return $this;
+		}
 	}

@@ -16,8 +16,8 @@
     ],
     "require": {
 				"php": ">=8.1",
-        "phpunit/php-timer": "^7.0",
-        "phpfui/orm": "^1.6",
+        "phpunit/php-timer": "^8.0",
+        "phpfui/orm": "^2.0",
         "illuminate/database": "*",
         "illuminate/contracts": "*",
         "illuminate/events": "*",
@@ -27,7 +27,7 @@
         "symfony/cache": "^7.2"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.51",
         "phpfui/phpunit-syntax-coverage": "^1.0"
     }

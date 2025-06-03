@@ -22,21 +22,30 @@ abstract class PurchaseOrderDetail extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'date_received' => ['datetime', 'string', 20, true, NULL, ],
-		'inventory_transaction_id' => ['integer', 'int', 0, true, NULL, ],
-		'posted_to_inventory' => ['integer', 'int', 0, false, 0, ],
-		'product_id' => ['integer', 'int', 0, true, NULL, ],
-		'purchase_order_detail_id' => ['integer', 'int', 0, false, ],
-		'purchase_order_id' => ['integer', 'int', 0, false, ],
-		'quantity' => ['decimal(18,4)', 'float', 18, false, ],
-		'unit_cost' => ['decimal(19,4)', 'float', 19, false, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['purchase_order_detail_id', ];
 
 	protected static string $table = 'purchase_order_detail';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'date_received' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'posted_to_inventory' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, 0, ),
+			'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'purchase_order_detail_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'quantity' => new \PHPFUI\ORM\FieldDefinition('decimal(18,4)', 'float', 18, false, ),
+			'unit_cost' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, ),
+		];
+			}
+
+		return $this;
+		}
 	}

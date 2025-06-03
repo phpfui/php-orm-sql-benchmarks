@@ -29,31 +29,40 @@ abstract class Shipper extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'address' => ['longtext', 'string', 4294967295, true, NULL, ],
-		'attachments' => ['longblob', 'string', 0, true, NULL, ],
-		'business_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
-		'city' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'company' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'country_region' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'email_address' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'fax_number' => ['varchar(25)', 'string', 25, true, NULL, ],
-		'first_name' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'home_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
-		'job_title' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'last_name' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'mobile_phone' => ['varchar(25)', 'string', 25, true, NULL, ],
-		'notes' => ['longtext', 'string', 4294967295, true, NULL, ],
-		'shipper_id' => ['integer', 'int', 0, false, ],
-		'state_province' => ['varchar(50)', 'string', 50, true, NULL, ],
-		'web_page' => ['longtext', 'string', 4294967295, true, NULL, ],
-		'zip_postal_code' => ['varchar(15)', 'string', 15, true, NULL, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['shipper_id', ];
 
 	protected static string $table = 'shipper';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+			'attachments' => new \PHPFUI\ORM\FieldDefinition('longblob', 'string', 0, true, null, ),
+			'business_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+			'city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'company' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'email_address' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'fax_number' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+			'first_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'home_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+			'job_title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'last_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'mobile_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+			'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+			'shipper_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+			'web_page' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+			'zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(15)', 'string', 15, true, null, ),
+		];
+			}
+
+		return $this;
+		}
 	}

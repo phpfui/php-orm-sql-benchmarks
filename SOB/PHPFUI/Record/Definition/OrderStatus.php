@@ -13,15 +13,24 @@ abstract class OrderStatus extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = false;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'order_status_id' => ['integer', 'int', 0, false, ],
-		'order_status_name' => ['varchar(50)', 'string', 50, false, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['order_status_id', ];
 
 	protected static string $table = 'order_status';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'order_status_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
+		];
+			}
+
+		return $this;
+		}
 	}

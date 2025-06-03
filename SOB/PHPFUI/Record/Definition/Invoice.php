@@ -19,20 +19,29 @@ abstract class Invoice extends \PHPFUI\ORM\Record
 	{
 	protected static bool $autoIncrement = true;
 
-	/** @var array<string, array<mixed>> */
-	protected static array $fields = [
-		// MYSQL_TYPE, PHP_TYPE, LENGTH, ALLOWS_NULL, DEFAULT
-		'amount_due' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
-		'due_date' => ['datetime', 'string', 20, true, NULL, ],
-		'invoice_date' => ['datetime', 'string', 20, false, NULL, ],
-		'invoice_id' => ['integer', 'int', 0, false, ],
-		'order_id' => ['integer', 'int', 0, true, NULL, ],
-		'shipping' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
-		'tax' => ['decimal(19,4)', 'float', 19, true, 0.0000, ],
-	];
+	/** @var array<string, \PHPFUI\ORM\FieldDefinition> */
+	protected static array $fields = [];
 
 	/** @var array<string> */
 	protected static array $primaryKeys = ['invoice_id', ];
 
 	protected static string $table = 'invoice';
+
+	public function initFieldDefinitions() : static
+		{
+		if (! count(static::$fields))
+			{
+			static::$fields = [
+			'amount_due' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+			'due_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+			'invoice_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+			'invoice_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
+			'shipping' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+			'tax' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+		];
+			}
+
+		return $this;
+		}
 	}
