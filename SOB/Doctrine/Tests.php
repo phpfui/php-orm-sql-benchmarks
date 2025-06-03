@@ -6,7 +6,7 @@ use SOB\Doctrine\Entity\Employee;
 
 class Tests extends \SOB\Test
 	{
-	protected \Doctrine\ORM\EntityManager $entityManager;
+	protected ?\Doctrine\ORM\EntityManager $entityManager;
 
 	public function closeConnection() : void
 		{

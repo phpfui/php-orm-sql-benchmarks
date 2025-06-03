@@ -21,7 +21,7 @@ class Configurations implements \Countable, \Iterator
 			{
 			$this->parameters = include $configFile;
 
-			if (! \is_array($this->parameters))
+			if (! \is_array($this->parameters))	// @phpstan-ignore-line
 				{
 				$this->parameters = [];
 				}
