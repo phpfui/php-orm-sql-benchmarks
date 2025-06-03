@@ -106,6 +106,11 @@ class Tests extends \SOB\Test
 		return $this;
 		}
 
+	public function flush() : void
+		{
+		$this->entityManager->flush();
+		}
+
 	/**
 	 * class must insert one record with id=$id
 	 *

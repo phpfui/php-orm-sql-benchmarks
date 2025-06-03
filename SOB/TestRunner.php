@@ -61,6 +61,7 @@ class TestRunner
 			$this->test($tester, $config);
 			$this->addResults($this->currentResults);
 			$tester->closeConnection();
+			$tester = null;
 			}
 
 		return true;
@@ -98,10 +99,17 @@ class TestRunner
 
 		echo "Executing insert test\n";
 
+		$id = 0;
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
-			$tester->insert($i);
+			$newId = $tester->insert($i);
+			if ($newId <= $id)
+				{
+				throw new \Exception('Failed to insert ' . $newId);
+				}
+			$id = $newId;
 			}
+		$tester->flush();
 		$this->setResult('Insert', $timer);
 
 		$timer = new \SOB\BaseLine();
@@ -112,6 +120,7 @@ class TestRunner
 			{
 			$tester->testUpdate($tester->read($i), "Last {$i}");
 			}
+		$tester->flush();
 		$this->setResult('Read', $timer);
 
 		$timer = new \SOB\BaseLine();
@@ -120,6 +129,7 @@ class TestRunner
 			{
 			$tester->update($i, $i + $this->updateOffset);
 			}
+		$tester->flush();
 		$this->setResult('Update', $timer);
 
 		$timer = new \SOB\BaseLine();
@@ -155,6 +165,7 @@ class TestRunner
 				throw new \Exception('Failed to delete ' . $i);
 				}
 			}
+		$tester->flush();
 		$this->setResult('Delete', $timer);
 
 		$this->setResult('Total Runtime', $runTime);
