@@ -76,7 +76,7 @@ class Tests extends \SOB\Test
 
 			if (\str_ends_with(\trim((string)$line), ';'))
 				{
-				$this->connection->execute($sql); 	// @phpstan-ignore-line
+				$this->connection->execute($sql);	// @phpstan-ignore-line
 				$sql = '';
 				}
 			} // end foreach
