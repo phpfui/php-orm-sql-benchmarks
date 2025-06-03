@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="\SOB\Propel2" defaultPhpNamingMethod="underscore">
+  <table name="customer" idMethod="native" phpName="Customer">
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="50"/>
+    <column name="last_name" phpName="LastName" type="VARCHAR" size="50"/>
+    <column name="first_name" phpName="FirstName" type="VARCHAR" size="50"/>
+    <column name="email_address" phpName="EmailAddress" type="VARCHAR" size="50"/>
+    <column name="job_title" phpName="JobTitle" type="VARCHAR" size="50"/>
+    <column name="business_phone" phpName="BusinessPhone" type="VARCHAR" size="25"/>
+    <column name="home_phone" phpName="HomePhone" type="VARCHAR" size="25"/>
+    <column name="mobile_phone" phpName="MobilePhone" type="VARCHAR" size="25"/>
+    <column name="fax_number" phpName="FaxNumber" type="VARCHAR" size="25"/>
+    <column name="address" phpName="Address" type="CLOB"/>
+    <column name="city" phpName="City" type="VARCHAR" size="50"/>
+    <column name="state_province" phpName="StateProvince" type="VARCHAR" size="50"/>
+    <column name="zip_postal_code" phpName="ZipPostalCode" type="VARCHAR" size="15"/>
+    <column name="country_region" phpName="CountryRegion" type="VARCHAR" size="50"/>
+    <column name="web_page" phpName="WebPage" type="CLOB"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="attachments" phpName="Attachments" type="LONGVARBINARY"/>
+    <index name="customer_city">
+      <index-column name="city"/>
+    </index>
+    <index name="customer_company">
+      <index-column name="company"/>
+    </index>
+    <index name="customer_first_name">
+      <index-column name="first_name"/>
+    </index>
+    <index name="customer_last_name">
+      <index-column name="last_name"/>
+    </index>
+    <index name="customer_zip_postal_code">
+      <index-column name="zip_postal_code"/>
+    </index>
+    <index name="customer_state_province">
+      <index-column name="state_province"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="daterecord" idMethod="native" phpName="Daterecord">
+    <column name="dateRecordId" phpName="Daterecordid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="dateRequired" phpName="Daterequired" type="DATE" required="true"/>
+    <column name="dateDefaultNull" phpName="Datedefaultnull" type="DATE"/>
+    <column name="dateDefaultNullable" phpName="Datedefaultnullable" type="DATE" defaultValue="2000-01-02"/>
+    <column name="dateDefaultNotNull" phpName="Datedefaultnotnull" type="DATE" required="true" defaultValue="2000-01-02"/>
+    <column name="timestampDefaultCurrentNullable" phpName="Timestampdefaultcurrentnullable" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="timestampDefaultCurrentNotNull" phpName="Timestampdefaultcurrentnotnull" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="employee" idMethod="native" phpName="Employee">
+    <column name="employee_id" phpName="EmployeeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="50"/>
+    <column name="last_name" phpName="LastName" type="VARCHAR" size="50"/>
+    <column name="first_name" phpName="FirstName" type="VARCHAR" size="50"/>
+    <column name="email_address" phpName="EmailAddress" type="VARCHAR" size="50"/>
+    <column name="job_title" phpName="JobTitle" type="VARCHAR" size="50"/>
+    <column name="business_phone" phpName="BusinessPhone" type="VARCHAR" size="25"/>
+    <column name="home_phone" phpName="HomePhone" type="VARCHAR" size="25"/>
+    <column name="mobile_phone" phpName="MobilePhone" type="VARCHAR" size="25"/>
+    <column name="fax_number" phpName="FaxNumber" type="VARCHAR" size="25"/>
+    <column name="address" phpName="Address" type="CLOB"/>
+    <column name="city" phpName="City" type="VARCHAR" size="50"/>
+    <column name="state_province" phpName="StateProvince" type="VARCHAR" size="50"/>
+    <column name="zip_postal_code" phpName="ZipPostalCode" type="VARCHAR" size="15"/>
+    <column name="country_region" phpName="CountryRegion" type="VARCHAR" size="50"/>
+    <column name="web_page" phpName="WebPage" type="CLOB"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="attachments" phpName="Attachments" type="LONGVARBINARY"/>
+    <index name="employee_city">
+      <index-column name="city"/>
+    </index>
+    <index name="employee_company">
+      <index-column name="company"/>
+    </index>
+    <index name="employee_first_name">
+      <index-column name="first_name"/>
+    </index>
+    <index name="employee_last_name">
+      <index-column name="last_name"/>
+    </index>
+    <index name="employee_zip_postal_code">
+      <index-column name="zip_postal_code"/>
+    </index>
+    <index name="employee_state_province">
+      <index-column name="state_province"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="employee_privilege" idMethod="native" phpName="EmployeePrivilege">
+    <column name="employee_id" phpName="EmployeeId" type="INTEGER" required="true"/>
+    <column name="privilege_id" phpName="PrivilegeId" type="INTEGER" required="true"/>
+    <index name="employee_privilege_employee_id">
+      <index-column name="employee_id"/>
+    </index>
+    <index name="employee_privilege_privilege_id">
+      <index-column name="privilege_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="image" idMethod="native" phpName="Image">
+    <column name="imageId" phpName="Imageid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="imageableId" phpName="Imageableid" type="INTEGER"/>
+    <column name="imageable_type" phpName="ImageableType" type="VARCHAR" size="128"/>
+    <column name="path" phpName="Path" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="inventory_transaction" idMethod="native" phpName="InventoryTransaction">
+    <column name="inventory_transaction_id" phpName="InventoryTransactionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="inventory_transaction_type_id" phpName="InventoryTransactionTypeId" type="INTEGER" required="true"/>
+    <column name="transaction_created_date" phpName="TransactionCreatedDate" type="DATETIME" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="transaction_modified_date" phpName="TransactionModifiedDate" type="DATETIME" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" required="true"/>
+    <column name="purchase_order_id" phpName="PurchaseOrderId" type="INTEGER"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER"/>
+    <column name="comments" phpName="Comments" type="VARCHAR" size="255"/>
+    <index name="inventory_transaction_order_id">
+      <index-column name="order_id"/>
+    </index>
+    <index name="inventory_transaction_product_id">
+      <index-column name="product_id"/>
+    </index>
+    <index name="inventory_transaction_purchase_order_id">
+      <index-column name="purchase_order_id"/>
+    </index>
+    <index name="inventory_transaction_inventory_transaction_type_id">
+      <index-column name="inventory_transaction_type_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="inventory_transaction_type" idMethod="native" phpName="InventoryTransactionType">
+    <column name="inventory_transaction_type_id" phpName="InventoryTransactionTypeId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="inventory_transaction_type_name" phpName="InventoryTransactionTypeName" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="invoice" idMethod="native" phpName="Invoice">
+    <column name="invoice_id" phpName="InvoiceId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER"/>
+    <column name="invoice_date" phpName="InvoiceDate" type="DATETIME" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="due_date" phpName="DueDate" type="DATETIME"/>
+    <column name="tax" phpName="Tax" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="shipping" phpName="Shipping" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="amount_due" phpName="AmountDue" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <index name="invoice_order_id">
+      <index-column name="order_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="migration" idMethod="native" phpName="Migration">
+    <column name="migrationId" phpName="Migrationid" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="ran" phpName="Ran" type="TIMESTAMP" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="order" idMethod="native" phpName="Order">
+    <column name="order_id" phpName="OrderId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="employee_id" phpName="EmployeeId" type="INTEGER"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER"/>
+    <column name="order_date" phpName="OrderDate" type="DATETIME" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="shipped_date" phpName="ShippedDate" type="DATETIME"/>
+    <column name="shipper_id" phpName="ShipperId" type="INTEGER"/>
+    <column name="ship_name" phpName="ShipName" type="VARCHAR" size="50"/>
+    <column name="ship_address" phpName="ShipAddress" type="CLOB"/>
+    <column name="ship_city" phpName="ShipCity" type="VARCHAR" size="50"/>
+    <column name="ship_state_province" phpName="ShipStateProvince" type="VARCHAR" size="50"/>
+    <column name="ship_zip_postal_code" phpName="ShipZipPostalCode" type="VARCHAR" size="50"/>
+    <column name="ship_country_region" phpName="ShipCountryRegion" type="VARCHAR" size="50"/>
+    <column name="shipping_fee" phpName="ShippingFee" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="taxes" phpName="Taxes" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="payment_type" phpName="PaymentType" type="VARCHAR" size="50"/>
+    <column name="paid_date" phpName="PaidDate" type="DATETIME"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="tax_rate" phpName="TaxRate" type="DOUBLE" defaultValue="0"/>
+    <column name="order_tax_status_id" phpName="OrderTaxStatusId" type="INTEGER"/>
+    <column name="order_status_id" phpName="OrderStatusId" type="INTEGER" defaultValue="0"/>
+    <index name="fk_order_order_status1">
+      <index-column name="order_status_id"/>
+    </index>
+    <index name="order_customer_id">
+      <index-column name="customer_id"/>
+    </index>
+    <index name="order_employee_id">
+      <index-column name="employee_id"/>
+    </index>
+    <index name="order_shipper_id">
+      <index-column name="shipper_id"/>
+    </index>
+    <index name="order_tax_status">
+      <index-column name="order_tax_status_id"/>
+    </index>
+    <index name="order_ship_zip_postal_code">
+      <index-column name="ship_zip_postal_code"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="order_detail" idMethod="native" phpName="OrderDetail">
+    <column name="order_detail_id" phpName="OrderDetailId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER"/>
+    <column name="quantity" phpName="Quantity" type="DECIMAL" size="18" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="unit_price" phpName="UnitPrice" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="discount" phpName="Discount" type="DOUBLE" required="true" defaultValue="0"/>
+    <column name="order_detail_status_id" phpName="OrderDetailStatusId" type="INTEGER"/>
+    <column name="date_allocated" phpName="DateAllocated" type="DATETIME"/>
+    <column name="purchase_order_id" phpName="PurchaseOrderId" type="INTEGER"/>
+    <column name="inventory_transaction_id" phpName="InventoryTransactionId" type="INTEGER"/>
+    <index name="order_detail_inventory_id">
+      <index-column name="inventory_transaction_id"/>
+    </index>
+    <index name="order_detail_product_id">
+      <index-column name="product_id"/>
+    </index>
+    <index name="order_detail_purchase_order_id">
+      <index-column name="purchase_order_id"/>
+    </index>
+    <index name="order_detail_order_id">
+      <index-column name="order_id"/>
+    </index>
+    <index name="order_detail_status_id">
+      <index-column name="order_detail_status_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="order_detail_status" idMethod="native" phpName="OrderDetailStatus">
+    <column name="order_detail_status_id" phpName="OrderDetailStatusId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="order_detail_status_name" phpName="OrderDetailStatusName" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="order_status" idMethod="native" phpName="OrderStatus">
+    <column name="order_status_id" phpName="OrderStatusId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="order_status_name" phpName="OrderStatusName" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="order_tax_status" idMethod="native" phpName="OrderTaxStatus">
+    <column name="order_tax_status_id" phpName="OrderTaxStatusId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="order_tax_status_name" phpName="OrderTaxStatusName" type="VARCHAR" size="50" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="privilege" idMethod="native" phpName="Privilege">
+    <column name="privilege_id" phpName="PrivilegeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="privilege" phpName="Privilege" type="VARCHAR" size="50"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="product" idMethod="native" phpName="Product">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_code" phpName="ProductCode" type="VARCHAR" size="25"/>
+    <column name="product_name" phpName="ProductName" type="VARCHAR" size="50"/>
+    <column name="description" phpName="Description" type="CLOB"/>
+    <column name="standard_cost" phpName="StandardCost" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="list_price" phpName="ListPrice" type="DECIMAL" size="19" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="reorder_level" phpName="ReorderLevel" type="INTEGER"/>
+    <column name="target_level" phpName="TargetLevel" type="INTEGER"/>
+    <column name="quantity_per_unit" phpName="QuantityPerUnit" type="VARCHAR" size="50"/>
+    <column name="discontinued" phpName="Discontinued" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="minimum_reorder_quantity" phpName="MinimumReorderQuantity" type="INTEGER"/>
+    <column name="category" phpName="Category" type="VARCHAR" size="50"/>
+    <column name="attachments" phpName="Attachments" type="LONGVARBINARY"/>
+    <index name="product_product_code">
+      <index-column name="product_code"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="product_supplier" idMethod="native" phpName="ProductSupplier">
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="supplier_id" phpName="SupplierId" type="INTEGER" required="true"/>
+    <index name="product_supplier_product_id">
+      <index-column name="product_id"/>
+    </index>
+    <index name="product_supplier_supplier_id">
+      <index-column name="supplier_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="purchase_order" idMethod="native" phpName="PurchaseOrder">
+    <column name="purchase_order_id" phpName="PurchaseOrderId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="supplier_id" phpName="SupplierId" type="INTEGER"/>
+    <column name="created_by" phpName="CreatedBy" type="INTEGER"/>
+    <column name="submitted_date" phpName="SubmittedDate" type="DATETIME"/>
+    <column name="creation_date" phpName="CreationDate" type="DATETIME" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="purchase_order_status_id" phpName="PurchaseOrderStatusId" type="INTEGER" defaultValue="0"/>
+    <column name="expected_date" phpName="ExpectedDate" type="DATETIME"/>
+    <column name="shipping_fee" phpName="ShippingFee" type="DECIMAL" size="19" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="taxes" phpName="Taxes" type="DECIMAL" size="19" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="payment_date" phpName="PaymentDate" type="DATETIME"/>
+    <column name="payment_amount" phpName="PaymentAmount" type="DECIMAL" size="19" scale="4" defaultValue="0.0000"/>
+    <column name="payment_method" phpName="PaymentMethod" type="VARCHAR" size="50"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="approved_by" phpName="ApprovedBy" type="INTEGER"/>
+    <column name="approved_date" phpName="ApprovedDate" type="DATETIME"/>
+    <column name="submitted_by" phpName="SubmittedBy" type="INTEGER"/>
+    <index name="purchase_order_created_by">
+      <index-column name="created_by"/>
+    </index>
+    <index name="purchase_order_status_id">
+      <index-column name="purchase_order_status_id"/>
+    </index>
+    <index name="purchase_order_supplier_id">
+      <index-column name="supplier_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="purchase_order_detail" idMethod="native" phpName="PurchaseOrderDetail">
+    <column name="purchase_order_detail_id" phpName="PurchaseOrderDetailId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="purchase_order_id" phpName="PurchaseOrderId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER"/>
+    <column name="quantity" phpName="Quantity" type="DECIMAL" size="18" scale="4" required="true"/>
+    <column name="unit_cost" phpName="UnitCost" type="DECIMAL" size="19" scale="4" required="true"/>
+    <column name="date_received" phpName="DateReceived" type="DATETIME"/>
+    <column name="posted_to_inventory" phpName="PostedToInventory" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="inventory_transaction_id" phpName="InventoryTransactionId" type="INTEGER"/>
+    <index name="purchase_order_detail_inventory_id">
+      <index-column name="inventory_transaction_id"/>
+    </index>
+    <index name="purchase_order_detail_purchase_order_id">
+      <index-column name="purchase_order_id"/>
+    </index>
+    <index name="purchase_order_detail_product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="purchase_order_status" idMethod="native" phpName="PurchaseOrderStatus">
+    <column name="purchase_order_status_id" phpName="PurchaseOrderStatusId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="purchase_order_status_name" phpName="PurchaseOrderStatusName" type="VARCHAR" size="50"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="sales_report" idMethod="native" phpName="SalesReport">
+    <column name="group_by" phpName="GroupBy" type="VARCHAR" size="50" primaryKey="true" required="true"/>
+    <column name="display" phpName="Display" type="VARCHAR" size="50"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="50"/>
+    <column name="filter_row_source" phpName="FilterRowSource" type="CLOB"/>
+    <column name="default" phpName="Default" type="INTEGER" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="setting" idMethod="native" phpName="Setting">
+    <column name="setting_id" phpName="SettingId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="setting_data" phpName="SettingData" type="VARCHAR" size="255"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="shipper" idMethod="native" phpName="Shipper">
+    <column name="shipper_id" phpName="ShipperId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="50"/>
+    <column name="last_name" phpName="LastName" type="VARCHAR" size="50"/>
+    <column name="first_name" phpName="FirstName" type="VARCHAR" size="50"/>
+    <column name="email_address" phpName="EmailAddress" type="VARCHAR" size="50"/>
+    <column name="job_title" phpName="JobTitle" type="VARCHAR" size="50"/>
+    <column name="business_phone" phpName="BusinessPhone" type="VARCHAR" size="25"/>
+    <column name="home_phone" phpName="HomePhone" type="VARCHAR" size="25"/>
+    <column name="mobile_phone" phpName="MobilePhone" type="VARCHAR" size="25"/>
+    <column name="fax_number" phpName="FaxNumber" type="VARCHAR" size="25"/>
+    <column name="address" phpName="Address" type="CLOB"/>
+    <column name="city" phpName="City" type="VARCHAR" size="50"/>
+    <column name="state_province" phpName="StateProvince" type="VARCHAR" size="50"/>
+    <column name="zip_postal_code" phpName="ZipPostalCode" type="VARCHAR" size="15"/>
+    <column name="country_region" phpName="CountryRegion" type="VARCHAR" size="50"/>
+    <column name="web_page" phpName="WebPage" type="CLOB"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="attachments" phpName="Attachments" type="LONGVARBINARY"/>
+    <index name="shipper_city">
+      <index-column name="city"/>
+    </index>
+    <index name="shipper_company">
+      <index-column name="company"/>
+    </index>
+    <index name="shipper_first_name">
+      <index-column name="first_name"/>
+    </index>
+    <index name="shipper_last_name">
+      <index-column name="last_name"/>
+    </index>
+    <index name="shipper_zip_postal_code">
+      <index-column name="zip_postal_code"/>
+    </index>
+    <index name="shipper_state_province">
+      <index-column name="state_province"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="stringrecord" idMethod="native" phpName="Stringrecord">
+    <column name="stringRecordId" phpName="Stringrecordid" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="stringRequired" phpName="Stringrequired" type="VARCHAR" size="100" required="true"/>
+    <column name="stringDefaultNull" phpName="Stringdefaultnull" type="VARCHAR" size="100"/>
+    <column name="stringDefaultNullable" phpName="Stringdefaultnullable" type="VARCHAR" size="100" defaultValue="default"/>
+    <column name="stringDefaultNotNull" phpName="Stringdefaultnotnull" type="VARCHAR" size="100" required="true" defaultValue="default"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="supplier" idMethod="native" phpName="Supplier">
+    <column name="supplier_id" phpName="SupplierId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="50"/>
+    <column name="last_name" phpName="LastName" type="VARCHAR" size="50"/>
+    <column name="first_name" phpName="FirstName" type="VARCHAR" size="50"/>
+    <column name="email_address" phpName="EmailAddress" type="VARCHAR" size="50"/>
+    <column name="job_title" phpName="JobTitle" type="VARCHAR" size="50"/>
+    <column name="business_phone" phpName="BusinessPhone" type="VARCHAR" size="25"/>
+    <column name="home_phone" phpName="HomePhone" type="VARCHAR" size="25"/>
+    <column name="mobile_phone" phpName="MobilePhone" type="VARCHAR" size="25"/>
+    <column name="fax_number" phpName="FaxNumber" type="VARCHAR" size="25"/>
+    <column name="address" phpName="Address" type="CLOB"/>
+    <column name="city" phpName="City" type="VARCHAR" size="50"/>
+    <column name="state_province" phpName="StateProvince" type="VARCHAR" size="50"/>
+    <column name="zip_postal_code" phpName="ZipPostalCode" type="VARCHAR" size="15"/>
+    <column name="country_region" phpName="CountryRegion" type="VARCHAR" size="50"/>
+    <column name="web_page" phpName="WebPage" type="CLOB"/>
+    <column name="notes" phpName="Notes" type="CLOB"/>
+    <column name="attachments" phpName="Attachments" type="LONGVARBINARY"/>
+    <index name="supplier_city">
+      <index-column name="city"/>
+    </index>
+    <index name="supplier_company">
+      <index-column name="company"/>
+    </index>
+    <index name="supplier_first_name">
+      <index-column name="first_name"/>
+    </index>
+    <index name="supplier_last_name">
+      <index-column name="last_name"/>
+    </index>
+    <index name="supplier_zip_postal_code">
+      <index-column name="zip_postal_code"/>
+    </index>
+    <index name="supplier_state_province">
+      <index-column name="state_province"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+</database>

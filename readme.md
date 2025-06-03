@@ -83,3 +83,9 @@ Slight changes to the database schema are allowed and supported as long as the n
 If you see something wrong about the current usage of one of the libraries, please send a pull-request along with a short explanation of what that change does.
 
 Please, try to implement the solutions using the most common configuration. If you want to include an optimized version of the test, create another namespace for the **Tests** class.
+
+## 5. In Progress
+The /inProgress directory contains non-working benchmark code that I could not get working, either due to imcompatiblies with the testing suite (the package was not sufficiently configurable), errors in the package, or my lack of understanding on how to use the package. PRs welcome to update these tests to working code.
+
+## 6. Future Enhancements
+Artificial benchmarks can only provide so much insight into how a particular ORM performs on a particular SQL schema. Please feel free to add additional tests to further test these ORMs. Or add your favorate ORM. All PRs welcome.

@@ -1,0 +1,37 @@
+<?php
+<?php declare(strict_types=1);
+namespace SOB\Composite\Model;
+
+use Composite\DB\Attributes\{Table, PrimaryKey};
+use Composite\Entity\AbstractEntity;
+use Composite\DB\AbstractTable;
+use Composite\DB\TableConfig;
+
+/**
+ * This code is automatically generated.  See SOB\Composite\scaffolding\generateModels.php.  Do not update by hand.
+ *
+~DOC_BLOCK~ */
+#[Table(connection: 'mysql', name: '~TABLE~')]
+class ~CLASS~ extends AbstractEntity
+{
+    #[PrimaryKey(autoIncrement: ~AUTO_INCREMENT~)]
+    public readonly int $~PRIMARY_KEY~;
+
+    public function __construct(
+			~PARAMETERS~
+    ) {}
+}
+
+class ~CLASS~Table extends AbstractTable
+{
+    protected function getConfig(): TableConfig
+    {
+        return TableConfig::fromEntitySchema(~CLASS~::schema());
+    }
+
+    public function findOne(int $id): ?~CLASS~
+    {
+        return $this->_findByPk($id);
+    }
+}
+
