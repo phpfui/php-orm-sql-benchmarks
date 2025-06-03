@@ -36,6 +36,7 @@ function generate(string $table) : void
 	foreach ($fields as $field)
 		{
 		$accessible .= "\t\t'{$field->name}' => true,\n";
+
 		if ($field->autoIncrement)
 			{
 			$autoIncrement = true;
@@ -68,7 +69,7 @@ class ~CLASS~ extends \Cake\ORM\Table
 	{
 	public function initialize(array {$config}) : void
 		{
-		parent::initialize($config);
+		parent::initialize({$config});
 		{$that}->setTable('~TABLE~');
 		{$that}->setPrimaryKey('~PRIMARY_KEY~');
 		{$that}->setEntityClass('SOB\\Cake\Record\\~CLASS~');
@@ -95,7 +96,7 @@ namespace SOB\Cake\Record;
  */
 class ~CLASS~ extends \Cake\ORM\Entity
 	{
-	protected array $_accessible = ~ACCESSIBLE~
+	protected array {$_accessible} = ~ACCESSIBLE~
 	}";
 
 	$fileName = __DIR__ . "/../Record/{$class}.php";

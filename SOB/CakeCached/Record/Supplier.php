@@ -21,7 +21,7 @@ namespace SOB\CakeCached\Record;
  * @property ?string $web_page MySQL type longtext
  * @property ?string $notes MySQL type longtext
  * @property ?string $attachments MySQL type longblob
-
+ *
  */
 class Supplier extends \Cake\ORM\Entity
 	{
@@ -44,6 +44,5 @@ class Supplier extends \Cake\ORM\Entity
 		'web_page' => true,
 		'notes' => true,
 		'attachments' => true,
-		];
-
+	];
 	}

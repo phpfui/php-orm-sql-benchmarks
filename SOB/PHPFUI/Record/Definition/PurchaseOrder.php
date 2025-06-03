@@ -39,26 +39,26 @@ abstract class PurchaseOrder extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'approved_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'approved_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'created_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'creation_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-			'expected_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'payment_amount' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-			'payment_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'payment_method' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'purchase_order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
-			'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
-			'submitted_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'submitted_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'supplier_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
-		];
+				'approved_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'approved_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'created_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'creation_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'expected_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'payment_amount' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+				'payment_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'payment_method' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'purchase_order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
+				'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
+				'submitted_by' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'submitted_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'supplier_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, 0.0000, ),
+			];
 			}
 
 		return $this;

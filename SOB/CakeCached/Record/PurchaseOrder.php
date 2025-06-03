@@ -19,7 +19,7 @@ namespace SOB\CakeCached\Record;
  * @property ?int $approved_by MySQL type integer
  * @property ?string $approved_date MySQL type datetime
  * @property ?int $submitted_by MySQL type integer
-
+ *
  */
 class PurchaseOrder extends \Cake\ORM\Entity
 	{
@@ -40,6 +40,5 @@ class PurchaseOrder extends \Cake\ORM\Entity
 		'approved_by' => true,
 		'approved_date' => true,
 		'submitted_by' => true,
-		];
-
+	];
 	}

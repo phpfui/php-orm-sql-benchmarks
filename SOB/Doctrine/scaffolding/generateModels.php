@@ -34,7 +34,7 @@ function generate(string $table) : void
 
 	foreach (\PHPFUI\ORM::describeTable($table) as $field)
 		{
-		$fields .= getField($field);
+		$fields .= \getField($field);
 
 		$comment = \getComment($field, $commentedFields);
 
@@ -62,6 +62,7 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 	$text = '';
 
 	$orm = [];
+
 	if ($field->primaryKey)
 		{
 		$orm[] = '\Doctrine\ORM\Mapping\Id';
@@ -76,32 +77,35 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 
 	$type = $field->type;
 	$parts = [];
-	if ($pos = strpos($type, '('))
+
+	if ($pos = \strpos($type, '('))
 		{
-		$parts = explode(',', substr($type, $pos + 1, strlen($type) - $pos - 2));
+		$parts = \explode(',', \substr($type, $pos + 1, \strlen($type) - $pos - 2));
 		}
-	if (str_starts_with($type, 'decimal'))
+
+	if (\str_starts_with($type, 'decimal'))
 		{
 		$descriptions['type'] = '"decimal"';
 		$descriptions['precision'] = $parts[0];
 		$descriptions['scale'] = $parts[1];
 		}
-	elseif (str_starts_with($type, 'varchar'))
+	elseif (\str_starts_with($type, 'varchar'))
 		{
 		$descriptions['type'] = '"string"';
 		$descriptions['length'] = $parts[0];
 		}
 	else
 		{
-		$descriptions['type'] = '"' . str_replace('long', '', $type) . '"';
+		$descriptions['type'] = '"' . \str_replace('long', '', $type) . '"';
 		}
 
-	if ($field->defaultValue && $field->defaultValue !== 'NULL')
+	if ($field->defaultValue && 'NULL' !== $field->defaultValue)
 		{
-		$descriptions['options'] = '["default" => "' . str_replace(['"', "'"], '', $field->defaultValue) . '"]';
+		$descriptions['options'] = '["default" => "' . \str_replace(['"', "'"], '', $field->defaultValue) . '"]';
 		}
 
 	$nullable = '';
+
 	if ($field->nullable)
 		{
 		$descriptions['nullable'] = 'true';
@@ -109,24 +113,28 @@ function getField(\PHPFUI\ORM\Schema\Field $field) : string
 		}
 
 	$text = '';
+
 	foreach ($orm as $ormType)
 		{
 		$text .= "\t#[{$ormType}]\n";
 		}
 	$text .= "\t#[\Doctrine\ORM\Mapping\Column(";
 	$comma = '';
+
 	foreach ($descriptions as $descriptionType => $value)
 		{
 		$text .= $comma . $descriptionType . ': ' . $value;
 		$comma = ', ';
 		}
 	$text .= ")]\n";
-	$phptype = getPHPType($field->type);
+	$phptype = \getPHPType($field->type);
 	$phpDefault = '';
-	if ($field->defaultValue && $field->defaultValue !== 'CURRENT_TIMESTAMP')
+
+	if ($field->defaultValue && 'CURRENT_TIMESTAMP' !== $field->defaultValue)
 		{
-		$defaultValue = str_replace(['"', "'"], '', $field->defaultValue);
-		if (is_numeric($defaultValue))
+		$defaultValue = \str_replace(['"', "'"], '', $field->defaultValue);
+
+		if (\is_numeric($defaultValue))
 			{
 			$phpDefault = ' = ' . $defaultValue;
 			}

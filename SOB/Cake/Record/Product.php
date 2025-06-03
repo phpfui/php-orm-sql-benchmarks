@@ -16,7 +16,7 @@ namespace SOB\Cake\Record;
  * @property ?int $minimum_reorder_quantity MySQL type integer
  * @property ?string $category MySQL type varchar(50)
  * @property ?string $attachments MySQL type longblob
-
+ *
  */
 class Product extends \Cake\ORM\Entity
 	{
@@ -34,6 +34,5 @@ class Product extends \Cake\ORM\Entity
 		'minimum_reorder_quantity' => true,
 		'category' => true,
 		'attachments' => true,
-		];
-
+	];
 	}

@@ -8,7 +8,7 @@ namespace SOB\CakeCached\Record;
  * @property ?string $title MySQL type varchar(50)
  * @property ?string $filter_row_source MySQL type longtext
  * @property int $default MySQL type integer
-
+ *
  */
 class SalesReport extends \Cake\ORM\Entity
 	{
@@ -18,6 +18,5 @@ class SalesReport extends \Cake\ORM\Entity
 		'title' => true,
 		'filter_row_source' => true,
 		'default' => true,
-		];
-
+	];
 	}

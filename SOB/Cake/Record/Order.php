@@ -23,7 +23,7 @@ namespace SOB\Cake\Record;
  * @property ?float $tax_rate MySQL type double
  * @property ?int $order_tax_status_id MySQL type integer
  * @property ?int $order_status_id MySQL type integer
-
+ *
  */
 class Order extends \Cake\ORM\Entity
 	{
@@ -48,6 +48,5 @@ class Order extends \Cake\ORM\Entity
 		'tax_rate' => true,
 		'order_tax_status_id' => true,
 		'order_status_id' => true,
-		];
-
+	];
 	}

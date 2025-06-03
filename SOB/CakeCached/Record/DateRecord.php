@@ -10,7 +10,7 @@ namespace SOB\CakeCached\Record;
  * @property string $dateDefaultNotNull MySQL type date
  * @property ?string $timestampDefaultCurrentNullable MySQL type timestamp
  * @property string $timestampDefaultCurrentNotNull MySQL type timestamp
-
+ *
  */
 class DateRecord extends \Cake\ORM\Entity
 	{
@@ -22,6 +22,5 @@ class DateRecord extends \Cake\ORM\Entity
 		'dateDefaultNotNull' => true,
 		'timestampDefaultCurrentNullable' => true,
 		'timestampDefaultCurrentNotNull' => true,
-		];
-
+	];
 	}

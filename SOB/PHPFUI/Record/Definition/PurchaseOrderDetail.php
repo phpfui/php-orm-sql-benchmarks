@@ -32,18 +32,18 @@ abstract class PurchaseOrderDetail extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'date_received' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'posted_to_inventory' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, 0, ),
-			'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'purchase_order_detail_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'quantity' => new \PHPFUI\ORM\FieldDefinition('decimal(18,4)', 'float', 18, false, ),
-			'unit_cost' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, ),
-		];
+				'date_received' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'posted_to_inventory' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, 0, ),
+				'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'purchase_order_detail_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'quantity' => new \PHPFUI\ORM\FieldDefinition('decimal(18,4)', 'float', 18, false, ),
+				'unit_cost' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, false, ),
+			];
 			}
 
 		return $this;

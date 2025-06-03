@@ -11,7 +11,7 @@ namespace SOB\Cake\Record;
  * @property ?string $date_received MySQL type datetime
  * @property int $posted_to_inventory MySQL type integer
  * @property ?int $inventory_transaction_id MySQL type integer
-
+ *
  */
 class PurchaseOrderDetail extends \Cake\ORM\Entity
 	{
@@ -24,6 +24,5 @@ class PurchaseOrderDetail extends \Cake\ORM\Entity
 		'date_received' => true,
 		'posted_to_inventory' => true,
 		'inventory_transaction_id' => true,
-		];
-
+	];
 	}

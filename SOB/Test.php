@@ -15,13 +15,6 @@ abstract class Test
 		}
 
 	/**
-	 * override to flush buffers between tests if needed
-	 */
-	public function flush() : void
-		{
-		}
-
-	/**
 	 * Close the database connection
 	 */
 	abstract public function closeConnection() : void;
@@ -32,6 +25,13 @@ abstract class Test
 	 * @return true if deleted
 	 */
 	abstract public function delete(int $id) : bool;
+
+	/**
+	 * override to flush buffers between tests if needed
+	 */
+	public function flush() : void
+		{
+		}
 
 	/**
 	 * Initialize Responsibilities:

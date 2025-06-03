@@ -13,7 +13,7 @@ namespace SOB\CakeCached\Record;
  * @property ?string $date_allocated MySQL type datetime
  * @property ?int $purchase_order_id MySQL type integer
  * @property ?int $inventory_transaction_id MySQL type integer
-
+ *
  */
 class OrderDetail extends \Cake\ORM\Entity
 	{
@@ -28,6 +28,5 @@ class OrderDetail extends \Cake\ORM\Entity
 		'date_allocated' => true,
 		'purchase_order_id' => true,
 		'inventory_transaction_id' => true,
-		];
-
+	];
 	}

@@ -23,12 +23,12 @@ abstract class OrderTaxStatus extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'order_tax_status_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
-		];
+				'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'order_tax_status_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
+			];
 			}
 
 		return $this;

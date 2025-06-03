@@ -27,17 +27,17 @@ abstract class DateRecord extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'dateDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, '2000-01-02', ),
-			'dateDefaultNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, null, ),
-			'dateDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, '2000-01-02', ),
-			'dateRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'dateRequired' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, ),
-			'timestampDefaultCurrentNotNull' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-			'timestampDefaultCurrentNullable' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
-		];
+				'dateDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, '2000-01-02', ),
+				'dateDefaultNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, null, ),
+				'dateDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, '2000-01-02', ),
+				'dateRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'dateRequired' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, ),
+				'timestampDefaultCurrentNotNull' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'timestampDefaultCurrentNullable' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
+			];
 			}
 
 		return $this;

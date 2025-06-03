@@ -8,7 +8,7 @@ namespace SOB\Cake\Record;
  * @property ?string $stringDefaultNull MySQL type varchar(100)
  * @property ?string $stringDefaultNullable MySQL type varchar(100)
  * @property string $stringDefaultNotNull MySQL type varchar(100)
-
+ *
  */
 class StringRecord extends \Cake\ORM\Entity
 	{
@@ -18,6 +18,5 @@ class StringRecord extends \Cake\ORM\Entity
 		'stringDefaultNull' => true,
 		'stringDefaultNullable' => true,
 		'stringDefaultNotNull' => true,
-		];
-
+	];
 	}

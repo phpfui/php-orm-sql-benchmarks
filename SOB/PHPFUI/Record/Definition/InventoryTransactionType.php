@@ -23,12 +23,12 @@ abstract class InventoryTransactionType extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'inventory_transaction_type_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'inventory_transaction_type_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
-		];
+				'inventory_transaction_type_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'inventory_transaction_type_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
+			];
 			}
 
 		return $this;

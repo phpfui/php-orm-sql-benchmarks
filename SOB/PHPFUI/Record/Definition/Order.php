@@ -46,30 +46,30 @@ abstract class Order extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'employee_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'order_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-			'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
-			'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'paid_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'payment_type' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'ship_address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'ship_city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'ship_country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'ship_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'ship_state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'ship_zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'shipped_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'shipper_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-			'tax_rate' => new \PHPFUI\ORM\FieldDefinition('double', 'float', 0, true, 0, ),
-			'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-		];
+				'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'employee_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'order_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
+				'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'paid_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'payment_type' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'ship_address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'ship_city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'ship_country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'ship_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'ship_state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'ship_zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'shipped_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'shipper_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+				'tax_rate' => new \PHPFUI\ORM\FieldDefinition('double', 'float', 0, true, 0, ),
+				'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+			];
 			}
 
 		return $this;

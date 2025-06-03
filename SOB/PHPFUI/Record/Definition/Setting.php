@@ -23,12 +23,12 @@ abstract class Setting extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'setting_data' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, null, ),
-			'setting_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-		];
+				'setting_data' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, null, ),
+				'setting_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			];
 			}
 
 		return $this;

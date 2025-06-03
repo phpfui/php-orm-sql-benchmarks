@@ -22,12 +22,12 @@ abstract class Privilege extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'privilege' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'privilege_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-		];
+				'privilege' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'privilege_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			];
 			}
 
 		return $this;

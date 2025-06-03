@@ -29,17 +29,17 @@ abstract class Invoice extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'amount_due' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-			'due_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-			'invoice_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-			'invoice_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'shipping' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-			'tax' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-		];
+				'amount_due' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+				'due_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
+				'invoice_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'invoice_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'shipping' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+				'tax' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+			];
 			}
 
 		return $this;

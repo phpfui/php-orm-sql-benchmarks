@@ -25,15 +25,15 @@ abstract class StringRecord extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'stringDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, 'default', ),
-			'stringDefaultNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, null, ),
-			'stringDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, 'default', ),
-			'stringRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'stringRequired' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, ),
-		];
+				'stringDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, 'default', ),
+				'stringDefaultNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, null, ),
+				'stringDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, 'default', ),
+				'stringRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'stringRequired' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, ),
+			];
 			}
 
 		return $this;

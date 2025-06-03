@@ -4,7 +4,6 @@ namespace SOB\Cake;
 
 class Tests extends \SOB\Test
 	{
-
 	private $connection;	// @phpstan-ignore-line
 
 	public function closeConnection() : void
@@ -45,20 +44,20 @@ class Tests extends \SOB\Test
 			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
 			}
 
-		$driver = '\\Cake\\Database\\Driver\\' . ucfirst(strtolower($config->getDriver()));
+		$driver = '\\Cake\\Database\\Driver\\' . \ucfirst(\strtolower($config->getDriver()));
 
 		$run = \SOB\Cake\RunManager::get();
 		\Cake\Datasource\ConnectionManager::setConfig($run, [
-				'className' => 'Cake\Database\Connection',
-				'driver' => $driver,
-				'persistent' => false,
-				'host' => $config->getHost(),
-				'username' => $config->getUser(),
-				'password' => $config->getPassword(),
-				'database' => $config->getDatabase(),
-				'encoding' => 'utf8mb4',
-				'timezone' => 'UTC',
-				'cacheMetadata' => false,
+			'className' => 'Cake\Database\Connection',
+			'driver' => $driver,
+			'persistent' => false,
+			'host' => $config->getHost(),
+			'username' => $config->getUser(),
+			'password' => $config->getPassword(),
+			'database' => $config->getDatabase(),
+			'encoding' => 'utf8mb4',
+			'timezone' => 'UTC',
+			'cacheMetadata' => false,
 		]);
 		$this->connection = \Cake\Datasource\ConnectionManager::get($run);
 

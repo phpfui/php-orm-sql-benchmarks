@@ -34,19 +34,19 @@ abstract class InventoryTransaction extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'comments' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, null, ),
-			'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'inventory_transaction_type_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, NULL, ),
-			'quantity' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'transaction_created_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-			'transaction_modified_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-		];
+				'comments' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, null, ),
+				'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'inventory_transaction_type_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'quantity' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'transaction_created_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'transaction_modified_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+			];
 			}
 
 		return $this;

@@ -12,7 +12,7 @@ namespace SOB\Cake\Record;
  * @property ?int $purchase_order_id MySQL type integer
  * @property ?int $order_id MySQL type integer
  * @property ?string $comments MySQL type varchar(255)
-
+ *
  */
 class InventoryTransaction extends \Cake\ORM\Entity
 	{
@@ -26,6 +26,5 @@ class InventoryTransaction extends \Cake\ORM\Entity
 		'purchase_order_id' => true,
 		'order_id' => true,
 		'comments' => true,
-		];
-
+	];
 	}

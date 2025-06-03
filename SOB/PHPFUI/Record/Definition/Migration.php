@@ -22,12 +22,12 @@ abstract class Migration extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'migrationId' => new \PHPFUI\ORM\FieldDefinition('int', 'int', 0, false, ),
-			'ran' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
-		];
+				'migrationId' => new \PHPFUI\ORM\FieldDefinition('int', 'int', 0, false, ),
+				'ran' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
+			];
 			}
 
 		return $this;

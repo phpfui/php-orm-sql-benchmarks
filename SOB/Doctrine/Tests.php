@@ -10,7 +10,7 @@ class Tests extends \SOB\Test
 
 	public function closeConnection() : void
 		{
-		unset($this->entityManager);
+		$this->entityManager = null;
 		}
 
 	/**
@@ -24,6 +24,11 @@ class Tests extends \SOB\Test
 		return true;
 		}
 
+	public function flush() : void
+		{
+		$this->entityManager->flush();
+		}
+
 	/**
 	 * Initialize Responsibilities:
 	 *
@@ -33,8 +38,8 @@ class Tests extends \SOB\Test
 	 */
 	public function init(\SOB\Configuration $config) : static
 		{
-    $queryCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
-    $metadataCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
+	$queryCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
+	$metadataCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
 
 		$doctrineConfig = new \Doctrine\ORM\Configuration();
 		$doctrineConfig->setMetadataCache($metadataCache);
@@ -44,22 +49,23 @@ class Tests extends \SOB\Test
 		$doctrineConfig->setQueryCache($queryCache);
 		$doctrineConfig->setProxyDir(__DIR__ . '/Proxy');
 		$doctrineConfig->setProxyNamespace('SOB\Doctrine\Proxy');
-    $doctrineConfig->setAutoGenerateProxyClasses(true);
+	$doctrineConfig->setAutoGenerateProxyClasses(true);
 
 		// configuring the database connection
 		$database = $config->getDatabase();
 		$settings = [
 			'driver' => 'pdo_' . $config->getDriver(),
 			'host' => $config->getHost(),
-//			'path' => $config->getDatabase(),
-			'user'     => $config->getUser(),
+			//			'path' => $config->getDatabase(),
+			'user' => $config->getUser(),
 			'password' => $config->getPassword(),
-	//		'dbname'   => $config->getDatabase(),
+			//		'dbname'   => $config->getDatabase(),
 			'charset' => 'utf8',
 			'port' => $config->getPort(),
-			];
+		];
 		$database = $config->getDatabase();
-		if ($database == ':memory:')
+
+		if (':memory:' == $database)
 			{
 			$settings['memory'] = true;
 			}
@@ -104,11 +110,6 @@ class Tests extends \SOB\Test
 			} // end foreach
 
 		return $this;
-		}
-
-	public function flush() : void
-		{
-		$this->entityManager->flush();
 		}
 
 	/**

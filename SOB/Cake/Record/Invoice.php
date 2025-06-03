@@ -10,7 +10,7 @@ namespace SOB\Cake\Record;
  * @property ?float $tax MySQL type decimal(19,4)
  * @property ?float $shipping MySQL type decimal(19,4)
  * @property ?float $amount_due MySQL type decimal(19,4)
-
+ *
  */
 class Invoice extends \Cake\ORM\Entity
 	{
@@ -22,6 +22,5 @@ class Invoice extends \Cake\ORM\Entity
 		'tax' => true,
 		'shipping' => true,
 		'amount_due' => true,
-		];
-
+	];
 	}

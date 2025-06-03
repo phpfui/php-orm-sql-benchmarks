@@ -7,7 +7,7 @@ namespace SOB\Cake\Record;
  * @property ?int $imageable_id MySQL type integer
  * @property ?string $imageable_type MySQL type varchar(128)
  * @property string $path MySQL type varchar(128)
-
+ *
  */
 class Image extends \Cake\ORM\Entity
 	{
@@ -16,6 +16,5 @@ class Image extends \Cake\ORM\Entity
 		'imageable_id' => true,
 		'imageable_type' => true,
 		'path' => true,
-		];
-
+	];
 	}

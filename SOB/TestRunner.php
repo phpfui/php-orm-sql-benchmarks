@@ -100,9 +100,11 @@ class TestRunner
 		echo "Executing insert test\n";
 
 		$id = 0;
+
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
 			$newId = $tester->insert($i);
+
 			if ($newId <= $id)
 				{
 				throw new \Exception('Failed to insert ' . $newId);

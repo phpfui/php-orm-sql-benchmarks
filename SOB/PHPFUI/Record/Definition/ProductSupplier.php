@@ -24,12 +24,12 @@ abstract class ProductSupplier extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'supplier_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-		];
+				'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'supplier_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+			];
 			}
 
 		return $this;

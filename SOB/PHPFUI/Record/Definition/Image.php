@@ -25,14 +25,14 @@ abstract class Image extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'image_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'imageable_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
-			'imageable_type' => new \PHPFUI\ORM\FieldDefinition('varchar(128)', 'string', 128, true, ),
-			'path' => new \PHPFUI\ORM\FieldDefinition('varchar(128)', 'string', 128, false, ),
-		];
+				'image_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'imageable_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
+				'imageable_type' => new \PHPFUI\ORM\FieldDefinition('varchar(128)', 'string', 128, true, ),
+				'path' => new \PHPFUI\ORM\FieldDefinition('varchar(128)', 'string', 128, false, ),
+			];
 			}
 
 		return $this;

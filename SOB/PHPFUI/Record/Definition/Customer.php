@@ -39,28 +39,28 @@ abstract class Customer extends \PHPFUI\ORM\Record
 
 	public function initFieldDefinitions() : static
 		{
-		if (! count(static::$fields))
+		if (! \count(static::$fields))
 			{
 			static::$fields = [
-			'address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'attachments' => new \PHPFUI\ORM\FieldDefinition('longblob', 'string', 0, true, null, ),
-			'business_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
-			'city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'company' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-			'email_address' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'fax_number' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
-			'first_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'home_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
-			'job_title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'last_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'mobile_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
-			'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-			'web_page' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-			'zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(15)', 'string', 15, true, null, ),
-		];
+				'address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'attachments' => new \PHPFUI\ORM\FieldDefinition('longblob', 'string', 0, true, null, ),
+				'business_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+				'city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'company' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'email_address' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'fax_number' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+				'first_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'home_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+				'job_title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'last_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'mobile_phone' => new \PHPFUI\ORM\FieldDefinition('varchar(25)', 'string', 25, true, null, ),
+				'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'web_page' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(15)', 'string', 15, true, null, ),
+			];
 			}
 
 		return $this;
