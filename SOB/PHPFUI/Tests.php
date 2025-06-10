@@ -23,26 +23,13 @@ class Tests extends \SOB\Test
 		}
 
 	/**
-	 * Initialize Responsibilities:
+	 * Initialize the orm
 	 *
-	 *  * Initialize the orm
-	 *  * open the database
-	 *  * initialize the database schema
+	 * @param array<string> $lines sql to import into schema
 	 */
-	public function init(\SOB\Configuration $config) : static
+	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
 		$connection = $config->getPDOConnectionString();
-
-		if (\str_contains($connection, 'sqlite'))
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sqlite');
-			\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-			}
-		else
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
-			}
-
 		$this->pdo = new \PHPFUI\ORM\PDOInstance($connection, $config->getUser(), $config->getPassword());
 		\PHPFUI\ORM::addConnection($this->pdo);
 		\PHPFUI\ORM::$namespaceRoot = __DIR__ . '/../..';
@@ -51,30 +38,9 @@ class Tests extends \SOB\Test
 		\PHPFUI\ORM::$migrationNamespace = 'SOB\PHPFUI\Migration';
 		\PHPFUI\ORM::$idSuffix = '_id';
 
-		$sql = '';
+		$callback = [$this->pdo, 'exec'];
 
-		foreach ($lines as $line)
-			{
-			// Ignoring comments from the SQL script
-			if (\str_starts_with((string)$line, '--') || '' == $line)
-				{
-				continue;
-				}
-
-			$sql .= $line;
-
-			if (\str_ends_with(\trim((string)$line), ';'))
-				{
-				\PHPFUI\ORM::execute($sql);
-				$lastError = \PHPFUI\ORM::getLastError();
-
-				if ($lastError)
-					{
-					throw new \Exception($lastError . ' SQL: ' . $sql);
-					}
-				$sql = '';
-				}
-			} // end foreach
+		$this->loadSchema($lines, $callback, $runTimer);
 
 		return $this;
 		}

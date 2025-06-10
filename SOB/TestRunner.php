@@ -51,10 +51,20 @@ class TestRunner
 		return $this->results;
 		}
 
-	public function runTests() : bool
+	/**
+	 * @param array<int> $indexedTestsToRun indexes of specific tests to run
+	 */
+	public function runTests(array $indexedTestsToRun = []) : bool
 		{
+		$index = -1;
 		foreach ($this->configurations as $config)
 			{
+			++$index;
+			if ($indexedTestsToRun && ! in_array($index, $indexedTestsToRun))
+				{
+				continue;
+				}
+			echo "Running test {$index}. ";
 			$namespace = $config->getNameSpace();
 			$class = "\\SOB\\{$namespace}\\Tests";
 			$tester = new $class();
@@ -87,10 +97,13 @@ class TestRunner
 
 		$this->currentResults = ['Date/Time' => \date('Y-m-d H:i:s'), 'System' => $system, 'PHP' => PHP_VERSION, 'Test' => $config->getNamespace(), 'Description' => $config->getDescription(), ];
 
-		echo "Running {$config->getNamespace()} -> {$config->getDescription()}\n";
+		echo "{$config->getNamespace()} -> {$config->getDescription()}\n";
+
+		$lines = $tester->getSchemaLines($config);
+
 		$runTime = new \SOB\BaseLine();
 		$start = new \SOB\BaseLine();
-		$tester->init($config);
+		$connectionCallback = $tester->init($config, $lines, $runTime);
 		$this->setResult('Init', $start);
 
 		$iterations = $config->getIterations();

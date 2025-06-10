@@ -89,3 +89,6 @@ The /inProgress directory contains non-working benchmark code that I could not g
 
 ## 6. Future Enhancements
 Artificial benchmarks can only provide so much insight into how a particular ORM performs on a particular SQL schema. Please feel free to add additional tests to further test these ORMs. Or add your favorate ORM. All PRs welcome.
+
+## 7. Disclaimer
+Inclusion or omission of any particular ORM is not an endorsement or disapproval of any ORM.

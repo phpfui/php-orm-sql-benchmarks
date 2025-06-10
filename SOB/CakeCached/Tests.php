@@ -25,26 +25,12 @@ class Tests extends \SOB\Test
 		}
 
 	/**
-	 * Initialize Responsibilities:
+	 * Initialize the orm
 	 *
-	 *  * Initialize the orm
-	 *  * open the database
-	 *  * initialize the database schema
+	 * @param array<string> $lines sql to import into schema
 	 */
-	public function init(\SOB\Configuration $config) : static
+	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-		$connection = $config->getPDOConnectionString();
-
-		if (\str_contains($connection, 'sqlite'))
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sqlite');
-			\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-			}
-		else
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
-			}
-
 		$driver = '\\Cake\\Database\\Driver\\' . \ucfirst(\strtolower($config->getDriver()));
 
 		$run = \SOB\Cake\RunManager::get();
@@ -53,6 +39,7 @@ class Tests extends \SOB\Test
 			'driver' => $driver,
 			'persistent' => false,
 			'host' => $config->getHost(),
+			'port' => $config->getPort(),
 			'username' => $config->getUser(),
 			'password' => $config->getPassword(),
 			'database' => $config->getDatabase(),
@@ -60,28 +47,13 @@ class Tests extends \SOB\Test
 			'timezone' => 'UTC',
 			'cacheMetadata' => false,
 		]);
+
 		$this->connection = \Cake\Datasource\ConnectionManager::get($run);
-
-		$sql = '';
-
-		foreach ($lines as $line)
-			{
-			// Ignoring comments from the SQL script
-			if (\str_starts_with((string)$line, '--') || '' == $line)
-				{
-				continue;
-				}
-
-			$sql .= $line;
-
-			if (\str_ends_with(\trim((string)$line), ';'))
-				{
-				$this->connection->execute($sql);	// @phpstan-ignore-line
-				$sql = '';
-				}
-			} // end foreach
-
 		$this->employeeTable = new \SOB\Cake\Table\Employee();
+
+		$callback = [$this->connection, 'execute'];
+
+		$this->loadSchema($lines, $callback, $runTimer);
 
 		return $this;
 		}

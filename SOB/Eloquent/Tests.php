@@ -26,24 +26,12 @@ class Tests extends \SOB\Test
 		}
 
 	/**
-	 * Initialize Responsibilities:
+	 * Initialize the orm
 	 *
-	 *  * Initialize the orm
-	 *  * open the database
-	 *  * initialize the database schema
+	 * @param array<string> $lines sql to import into schema
 	 */
-	public function init(\SOB\Configuration $config) : static
+	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-		if (\str_contains($config->getDriver(), 'sqlite'))
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sqlite');
-			\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-			}
-		else
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
-			}
-
 		$this->capsule = new \Illuminate\Database\Capsule\Manager();
 
 		$this->capsule->addConnection([
@@ -69,25 +57,9 @@ class Tests extends \SOB\Test
 		// Setup the Eloquent ORM... (optional; unless you've used setEventDispatcher())
 		$this->capsule->bootEloquent();
 
-		$sql = '';
+		$callback = [$this->pdo, 'exec'];
 
-		foreach ($lines as $line)
-			{
-			// Ignoring comments from the SQL script
-			if (\str_starts_with((string)$line, '--') || \str_starts_with((string)$line, '#') || '' == $line)
-				{
-				continue;
-				}
-
-			$sql .= $line;
-
-			if (\str_ends_with(\trim((string)$line), ';'))
-				{
-				$stmt = $this->pdo->prepare($sql);
-				$stmt->execute();
-				$sql = '';
-				}
-			} // end foreach
+		$this->loadSchema($lines, $callback, $runTimer);
 
 		return $this;
 		}

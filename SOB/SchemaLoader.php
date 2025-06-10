@@ -2,6 +2,9 @@
 
 namespace SOB;
 
+/**
+ * Helper class to load the schema for scaffolding setup, not used for tests
+ */
 class SchemaLoader
 	{
 	public function __construct()

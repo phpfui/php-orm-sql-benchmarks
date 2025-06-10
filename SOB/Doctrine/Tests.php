@@ -19,7 +19,7 @@ class Tests extends \SOB\Test
 	public function delete(int $id) : bool
 		{
 		$this->entityManager->remove($this->read($id));
-		$this->entityManager->flush();
+		$this->flush();
 
 		return true;
 		}
@@ -30,16 +30,14 @@ class Tests extends \SOB\Test
 		}
 
 	/**
-	 * Initialize Responsibilities:
+	 * Initialize the orm
 	 *
-	 *  * Initialize the orm
-	 *  * open the database
-	 *  * initialize the database schema
+	 * @param array<string> $lines sql to import into schema
 	 */
-	public function init(\SOB\Configuration $config) : static
+	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-	$queryCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
-	$metadataCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
+		$queryCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
+		$metadataCache = new \Symfony\Component\Cache\Adapter\ArrayAdapter();
 
 		$doctrineConfig = new \Doctrine\ORM\Configuration();
 		$doctrineConfig->setMetadataCache($metadataCache);
@@ -49,17 +47,14 @@ class Tests extends \SOB\Test
 		$doctrineConfig->setQueryCache($queryCache);
 		$doctrineConfig->setProxyDir(__DIR__ . '/Proxy');
 		$doctrineConfig->setProxyNamespace('SOB\Doctrine\Proxy');
-	$doctrineConfig->setAutoGenerateProxyClasses(true);
+		$doctrineConfig->setAutoGenerateProxyClasses(true);
 
 		// configuring the database connection
-		$database = $config->getDatabase();
 		$settings = [
 			'driver' => 'pdo_' . $config->getDriver(),
 			'host' => $config->getHost(),
-			//			'path' => $config->getDatabase(),
 			'user' => $config->getUser(),
 			'password' => $config->getPassword(),
-			//		'dbname'   => $config->getDatabase(),
 			'charset' => 'utf8',
 			'port' => $config->getPort(),
 		];
@@ -78,36 +73,9 @@ class Tests extends \SOB\Test
 
 		// obtaining the entity manager
 		$this->entityManager = new \Doctrine\ORM\EntityManager($connection, $doctrineConfig);
+		$callback = [$connection, 'executeQuery'];
 
-		if (\str_contains($config->getDriver(), 'sqlite'))
-				{
-				$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sqlite');
-				\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-				}
-			else
-				{
-				$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
-				}
-
-		$sql = '';
-		$conn = $this->entityManager->getConnection();
-
-		foreach ($lines as $line)
-			{
-			// Ignoring comments from the SQL script
-			if (\str_starts_with((string)$line, '--') || \str_starts_with((string)$line, '#') || '' == $line)
-				{
-				continue;
-				}
-
-			$sql .= $line;
-
-			if (\str_ends_with(\trim((string)$line), ';'))
-				{
-				$conn->executeUpdate($sql);
-				$sql = '';
-				}
-			} // end foreach
+		$this->loadSchema($lines, $callback, $runTimer);
 
 		return $this;
 		}
@@ -125,7 +93,7 @@ class Tests extends \SOB\Test
 		$employee->last_name = "Last {$id}";
 		$employee->first_name = "First {$id}";
 		$this->entityManager->persist($employee);
-		$this->entityManager->flush();
+		$this->flush();
 
 		return $employee->employee_id;
 		}
@@ -149,7 +117,7 @@ class Tests extends \SOB\Test
 
 		$this->entityManager->persist($employee);
 
-		$this->entityManager->flush();
+		$this->flush();
 
 		return true;
 		}

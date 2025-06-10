@@ -34,13 +34,37 @@ abstract class Test
 		}
 
 	/**
-	 * Initialize Responsibilities:
+	 * Get the lines in the schema to load into the database
 	 *
-	 *  * Initialize the orm
-	 *  * open the database
-	 *  * initialize the database schema
+	 * @return array<string> sql to insert into database
 	 */
-	abstract public function init(\SOB\Configuration $config) : static;
+	public function getSchemaLines(\SOB\Configuration $config) : array
+		{
+		$connection = $config->getPDOConnectionString();
+
+		if (\str_contains($connection, 'sqlite'))
+			{
+			$lines = \file(__DIR__ . '/../northwind/northwind-schema.sqlite');
+
+			if (! \str_contains($connection, 'memory'))
+				{
+				\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
+				}
+			}
+		else
+			{
+			$lines = \file(__DIR__ . '/../northwind/northwind-schema.sql');
+			}
+
+		return $lines;
+		}
+
+	/**
+	 * Initialize the orm
+	 *
+	 * @param array<string> $lines sql to import into schema
+	 */
+	abstract public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static;
 
 	/**
 	 * class must insert one record with id=$id
@@ -48,6 +72,36 @@ abstract class Test
 	 * @return int $id inserted
 	 */
 	abstract public function insert(int $id) : int;
+
+	/**
+	 * @param array<string> $lines of sql to import into schema
+	 */
+	public function loadSchema(array $lines, callable $callback, \SOB\BaseLine $runTimer) : static
+		{
+		$runTimer->pause();
+		$sql = '';
+
+		foreach ($lines as $line)
+			{
+			// Ignoring comments from the SQL script
+			if (\str_starts_with((string)$line, '--') || '' == $line)
+				{
+				continue;
+				}
+
+			$sql .= $line;
+
+			if (\str_ends_with(\trim((string)$line), ';'))
+				{
+				\call_user_func($callback, $sql);
+				$sql = '';
+				}
+			} // end foreach
+
+		$runTimer->resume();
+
+		return $this;
+		}
 
 	/**
 	 * class must read and return one record with id=$id or null on no matching record

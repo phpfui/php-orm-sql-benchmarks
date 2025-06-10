@@ -2,10 +2,26 @@
 
 include 'vendor/autoload.php';
 
+/**
+ * Laravel shim
+ */
+function base_path(string $path = '') : string
+  {
+  echo __DIR__ . '/' . $path . "\n";
+  return __DIR__ . '/' . $path;
+  }
+
 $configs = new \SOB\Configurations(__DIR__ . '/config.php');
 $testRunner = new \SOB\TestRunner($configs);
 
-$testRunner->runTests();
+$testsToRun = [];
+array_shift($argv);
+foreach ($argv as $arg)
+	{
+	$testsToRun[] = (int)$arg;
+	}
+
+$testRunner->runTests($testsToRun);
 
 // write results at the top of the file for easy reference
 $resultsFile = 'results.csv';
