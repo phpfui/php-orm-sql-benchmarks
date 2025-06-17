@@ -6,6 +6,17 @@ class Tests extends \SOB\Test
 	{
 	private \Propel\Runtime\Connection\ConnectionManagerSingle $manager;
 
+	private $connection;
+
+	public function runSQL(string $sql) : void
+		{
+		if ($sql)
+			{
+			$stmt = $this->connection->prepare($sql);
+			$res = $stmt->execute();
+			}
+		}
+
 	public function closeConnection() : void
 		{
 		$this->manager->closeConnections();
@@ -35,26 +46,16 @@ class Tests extends \SOB\Test
 	 *  * open the database
 	 *  * initialize the database schema
 	 */
-	public function init(\SOB\Configuration $config) : static
+	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-		$connection = $config->getPDOConnectionString();
-
-		if (\str_contains($connection, 'sqlite'))
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sqlite');
-			\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-			}
-		else
-			{
-			$lines = \file(__DIR__ . '/../../northwind/northwind-schema.sql');
-			}
-
 		$serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
 		$serviceContainer->checkVersion(2);
 
 		$serviceContainer->setAdapterClass('default', $config->getDriver());
 
 		$this->manager = new \Propel\Runtime\Connection\ConnectionManagerSingle('default');
+
+		$connection = $config->getPDOConnectionString();
 
 		$this->manager->setConfiguration([
 			'dsn' => $connection,
@@ -127,27 +128,9 @@ class Tests extends \SOB\Test
 			],
 		]);
 
-		$sql = '';
+		$this->connection = \Propel\Runtime\Propel::getServiceContainer()->getWriteConnection('default');
 
-		$connection = \Propel\Runtime\Propel::getServiceContainer()->getWriteConnection('default');
-
-		foreach ($lines as $line)
-			{
-			// Ignoring comments from the SQL script
-			if (\str_starts_with((string)$line, '--') || '' == $line)
-				{
-				continue;
-				}
-
-			$sql .= $line;
-
-			if (\str_ends_with(\trim((string)$line), ';'))
-				{
-				$stmt = $connection->prepare($sql);
-				$res = $stmt->execute();
-				$sql = '';
-				}
-			} // end foreach
+		$this->loadSchema($lines, [$this, 'runSQL'], $runTimer);
 
 		return $this;
 		}
