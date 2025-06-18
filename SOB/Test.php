@@ -14,6 +14,11 @@ abstract class Test
 		{
 		}
 
+	public function dbSupported(\SOB\Configuration $config) : bool
+		{
+		return true;
+		}
+
 	/**
 	 * Close the database connection
 	 */

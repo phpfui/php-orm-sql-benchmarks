@@ -6,7 +6,7 @@ use SOB\Nextras\Model\AbstractRepository;
 
 class EmployeePrivilegeRepository extends AbstractRepository
 {
-	public static function getEntityClassNames(): array
+	public static function getEntityClassNames() : array
 	{
 		return [EmployeePrivilege::class];
 	}

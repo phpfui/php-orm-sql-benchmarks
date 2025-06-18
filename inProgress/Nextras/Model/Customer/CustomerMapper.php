@@ -6,7 +6,7 @@ use SOB\Nextras\Model\AbstractMapper;
 
 class CustomerMapper extends AbstractMapper
 {
-	public function getTableName(): string
+	public function getTableName() : string
 	{
 		return 'customer';
 	}

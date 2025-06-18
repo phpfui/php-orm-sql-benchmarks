@@ -57,10 +57,12 @@ class TestRunner
 	public function runTests(array $indexedTestsToRun = []) : bool
 		{
 		$index = -1;
+
 		foreach ($this->configurations as $config)
 			{
 			++$index;
-			if ($indexedTestsToRun && ! in_array($index, $indexedTestsToRun))
+
+			if ($indexedTestsToRun && ! \in_array($index, $indexedTestsToRun))
 				{
 				continue;
 				}
@@ -68,9 +70,16 @@ class TestRunner
 			$namespace = $config->getNameSpace();
 			$class = "\\SOB\\{$namespace}\\Tests";
 			$tester = new $class();
-			$this->test($tester, $config);
-			$this->addResults($this->currentResults);
-			$tester->closeConnection();
+			if ($tester->dbSupported($config))
+				{
+				$this->test($tester, $config);
+				$this->addResults($this->currentResults);
+				$tester->closeConnection();
+				}
+			else
+				{
+				echo "{$namespace} does not support {$config->getDriver()}\n";
+				}
 			$tester = null;
 			}
 
