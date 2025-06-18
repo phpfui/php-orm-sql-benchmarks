@@ -23,7 +23,8 @@
         "illuminate/events": "*",
         "cakephp/cakephp": "^5.0",
         "doctrine/orm": "^3.3",
-        "symfony/cache": "^7.2"
+        "symfony/cache": "^7.2",
+        "gabordemooij/redbean": "^5.7"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.0",
