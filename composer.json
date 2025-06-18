@@ -21,7 +21,7 @@
         "illuminate/database": "*",
         "illuminate/contracts": "*",
         "illuminate/events": "*",
-        "cakephp/cakephp": "dev-5.next",
+        "cakephp/cakephp": "^5.0",
         "doctrine/orm": "^3.3",
         "symfony/cache": "^7.2"
     },

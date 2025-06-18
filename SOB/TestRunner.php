@@ -112,7 +112,7 @@ class TestRunner
 
 		$runTime = new \SOB\BaseLine();
 		$start = new \SOB\BaseLine();
-		$connectionCallback = $tester->init($config, $lines, $runTime);
+		$tester->init($config, $lines, $runTime);
 		$this->setResult('Init', $start);
 
 		$iterations = $config->getIterations();
