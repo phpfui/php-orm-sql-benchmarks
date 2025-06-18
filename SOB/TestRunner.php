@@ -183,13 +183,15 @@ class TestRunner
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
 			$tester->delete($i);
-
+			}
+		$tester->flush();
+		for ($i = 1; $i <= $iterations; ++$i)
+			{
 			if ($tester->read($i))
 				{
 				throw new \Exception('Failed to delete ' . $i);
 				}
 			}
-		$tester->flush();
 		$this->setResult('Delete', $timer);
 
 		$this->setResult('Total Runtime', $runTime);
