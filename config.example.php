@@ -22,6 +22,18 @@ return [
 		['namespace' => 'PHPFUI', 'description' => 'sqlite::file:', 'dbname' => 'phpfui.sqlite'],
 		['namespace' => 'PHPFUI', 'driver' => 'mysql', 'description' => 'MySQL'],
 		['namespace' => 'PHPFUI', 'driver' => 'mysql', 'description' => 'MariaDB', 'port' => 3307],
+		['namespace' => 'PHPFUIBatch', 'description' => 'sqlite::memory:', 'dbname' => ':memory:'],
+		['namespace' => 'PHPFUIBatch', 'description' => 'sqlite::file:', 'dbname' => 'phpfuibatch.sqlite'],
+		['namespace' => 'PHPFUIBatch', 'driver' => 'mysql', 'description' => 'MySQL'],
+		['namespace' => 'PHPFUIBatch', 'driver' => 'mysql', 'description' => 'MariaDB', 'port' => 3307],
+		['namespace' => 'Propel2', 'description' => 'sqlite::memory:', 'dbname' => ':memory:'],
+		['namespace' => 'Propel2', 'description' => 'sqlite::file:', 'dbname' => 'propel2.sqlite'],
+		['namespace' => 'Propel2', 'driver' => 'mysql', 'description' => 'MySQL'],
+		['namespace' => 'Propel2', 'driver' => 'mysql', 'description' => 'MariaDB', 'port' => 3307],
+		['namespace' => 'RedBean', 'description' => 'sqlite::memory:', 'dbname' => ':memory:'],
+		['namespace' => 'RedBean', 'description' => 'sqlite::file:', 'dbname' => 'redbean.sqlite'],
+		['namespace' => 'RedBean', 'driver' => 'mysql', 'description' => 'MySQL'],
+		['namespace' => 'RedBean', 'driver' => 'mysql', 'description' => 'MariaDB', 'port' => 3307],
 	],
 ];
 

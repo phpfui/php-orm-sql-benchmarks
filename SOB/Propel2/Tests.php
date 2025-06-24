@@ -146,8 +146,9 @@ class Tests extends \SOB\Test
 		$employee->setCompany("Company {$id}");
 		$employee->setLastName("Last {$id}");
 		$employee->setFirstName("First {$id}");
+		$employee->save();
 
-		return $employee->save();
+		return $employee->getEmployeeId();
 		}
 
 	/**

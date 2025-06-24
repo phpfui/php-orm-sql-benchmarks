@@ -202,7 +202,7 @@ abstract class PurchaseOrderQuery extends ModelCriteria
 
 		// use transaction because $criteria could contain info
 		// for more than one table or we could emulating ON DELETE CASCADE, etc.
-		return $con->transaction(static function() use ($con, $criteria) {
+		return $con->transaction(function() use ($con, $criteria) {
 			$affectedRows = 0; // initialize var to track total num of affected rows
 
 			PurchaseOrderTableMap::removeInstanceFromPool($criteria);
