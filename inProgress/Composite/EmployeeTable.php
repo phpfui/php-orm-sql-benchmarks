@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace App\Composite;
+namespace SOB\Composite;
 
 use Composite\DB\AbstractTable;
 use Composite\DB\TableConfig;
 
-class UsersTable extends AbstractTable
+class EmployeeTable extends AbstractTable
 {
     protected function getConfig(): TableConfig
     {
-        return TableConfig::fromEntitySchema(User::schema());
+        return TableConfig::fromEntitySchema(Employee::schema());
     }
 
-    public function findOne(int $id): ?User
+    public function findOne(int $id): ?Employee
     {
         return $this->_findByPk($id);
     }
