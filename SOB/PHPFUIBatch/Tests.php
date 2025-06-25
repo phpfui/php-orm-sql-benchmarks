@@ -9,6 +9,7 @@ class Tests extends \SOB\PHPFUI\Tests
 
 	/** @var array<\SOB\PHPFUI\Record\Employee> $inserts */
 	private array $inserts = [];
+
 	/**
 	 * class must delete one record with id=$id
 	 */
@@ -33,6 +34,7 @@ class Tests extends \SOB\PHPFUI\Tests
 //			echo "\n";
 			$this->deletes = [];
 			}
+
 		if ($this->inserts)
 			{
 			$table = new \SOB\PHPFUI\Table\Employee();
@@ -55,6 +57,6 @@ class Tests extends \SOB\PHPFUI\Tests
 		$employee->first_name = "First {$id}";
 		$this->inserts[] = $employee;
 
-		return count($this->inserts) + 1;
+		return \count($this->inserts) + 1;
 		}
 	}

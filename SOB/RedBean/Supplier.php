@@ -1,5 +1,5 @@
 <?php
 
-class Employee extends \RedBeanPHP\SimpleModel
+class Supplier extends \RedBeanPHP\SimpleModel
 {
 }

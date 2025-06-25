@@ -70,6 +70,7 @@ class TestRunner
 			$namespace = $config->getNameSpace();
 			$class = "\\SOB\\{$namespace}\\Tests";
 			$tester = new $class();
+
 			if ($tester->dbSupported($config))
 				{
 				$this->test($tester, $config);
@@ -185,6 +186,7 @@ class TestRunner
 			$tester->delete($i);
 			}
 		$tester->flush();
+
 		for ($i = 1; $i <= $iterations; ++$i)
 			{
 			if ($tester->read($i))

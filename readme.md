@@ -1,6 +1,22 @@
 # PHP ORM and SQL Benchmarks
 This is a modern benchmark for PHP ORM implementations and SQL servers.
 
+Currently benchmarked PHP ORMs include:
+
+* [ActiveRecordPHP ORM](https://github.com/php-activerecord/activerecord)
+* [CakePHP ORM](https://github.com/cakephp/cakephp)
+* [Doctrine ORM](https://github.com/doctrine/orm)
+* [Laravel Eloquent ORM](https://github.com/illuminate/database)
+* [PHPFUI ORM](https://github.com/phpfui/orm)
+* [Propel2 ORM](https://github.com/propelorm/Propel2)
+* [RedBeanPHP ORM](https://github.com/gabordemooij/redbean)
+
+Currently supported SQL implementations include:
+
+* [MySQL](https://www.mysql.com/)
+* [MariaDB](https://mariadb.org/)
+* [SQLite](https://www.sqlite.org/)
+
 ## 1. Methodology
 This project uses a modified version of the NorthWind database schema from Microsoft Access.
 
@@ -12,8 +28,9 @@ Tests can be taylored to include or exclude specific servers, orms and iteration
 
 ## 2. Requirements
 * PHP 8.1 or greater
-* sqlite support
-* mysql support
+* [SQLite](https://www.sqlite.org/) support
+* [MySQL](https://www.mysql.com/) support
+* [MariaDB](https://mariadb.org/) support
 * Any other SQL server your want to test
 
 ### Installation
@@ -53,6 +70,8 @@ The following options are available:
 * password, default ''
 
 Create databases to match namespaces for each SQL server you want to test. Without a configuration file, sqlite::memory: and sqlite file will be used for all instances of the **Tests** class.
+
+see **config.example.php** for all current tests.
 
 ### Running All The Benchmarks
 ```

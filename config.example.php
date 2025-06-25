@@ -2,6 +2,10 @@
 return [
 	'iterations' => 1, // default is 5000
 	'tests' => [
+		['namespace' => 'ActiveRecord', 'driver' => 'sqlite', 'description' => 'sqlite::file:', 'dbname' => 'activerecord.sqlite'],
+		['namespace' => 'ActiveRecord', 'driver' => 'sqlite', 'description' => 'sqlite::memory:', 'dbname' => ':memory:'],
+//['namespace' => 'ActiveRecord', 'driver' => 'mysql', 'description' => 'MariaDB', 'port' => 3307], // not working due to SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0; not working
+		['namespace' => 'ActiveRecord', 'driver' => 'mysql', 'description' => 'MySQL'],
 		['namespace' => 'Cake', 'description' => 'sqlite::memory:', 'dbname' => ':memory:'],
 		['namespace' => 'Cake', 'description' => 'sqlite::file:', 'dbname' => 'cake.sqlite'],
 		['namespace' => 'Cake', 'driver' => 'mysql', 'description' => 'MySQL'],

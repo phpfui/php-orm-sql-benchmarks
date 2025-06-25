@@ -14,15 +14,15 @@ abstract class Test
 		{
 		}
 
-	public function dbSupported(\SOB\Configuration $config) : bool
-		{
-		return true;
-		}
-
 	/**
 	 * Close the database connection
 	 */
 	abstract public function closeConnection() : void;
+
+	public function dbSupported(\SOB\Configuration $config) : bool
+		{
+		return true;
+		}
 
 	/**
 	 * class must delete one record with id=$id
@@ -50,7 +50,7 @@ abstract class Test
 		$sqlite = 'northwind-schema.sqlite';
 		$sql = 'northwind-schema.sql';
 
-		if ($config->getNamespace() === 'RedBean')
+		if ('RedBean' === $config->getNamespace())
 			{
 			$sqlite = 'northwind-schema-pkid.sqlite';
 			$sql = 'northwind-schema-pkid.sql';

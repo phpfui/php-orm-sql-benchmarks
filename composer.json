@@ -25,7 +25,8 @@
         "doctrine/orm": "^3.3",
         "symfony/cache": "^7.2",
         "propel/propel": "dev-master",
-        "gabordemooij/redbean": "^5.7"
+        "gabordemooij/redbean": "^5.7",
+        "php-patterns/activerecord": "^2.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.0",

@@ -4,18 +4,9 @@ namespace SOB\Propel2;
 
 class Tests extends \SOB\Test
 	{
-	private \Propel\Runtime\Connection\ConnectionManagerSingle $manager;
-
 	private $connection;
 
-	public function runSQL(string $sql) : void
-		{
-		if ($sql)
-			{
-			$stmt = $this->connection->prepare($sql);
-			$res = $stmt->execute();
-			}
-		}
+	private \Propel\Runtime\Connection\ConnectionManagerSingle $manager;
 
 	public function closeConnection() : void
 		{
@@ -159,16 +150,13 @@ class Tests extends \SOB\Test
 		return EmployeeQuery::create()->findPK($id);
 		}
 
-	/**
-	 * class must update one record with id=$id to have $to in the data
-	 */
-	public function update(int $id, int $to) : bool
+	public function runSQL(string $sql) : void
 		{
-		$employee = EmployeeQuery::create()->findPK($id);
-
-		$employee->setLastName("Updated {$to}");
-
-		return $employee->save();
+		if ($sql)
+			{
+			$stmt = $this->connection->prepare($sql);
+			$res = $stmt->execute();
+			}
 		}
 
 	/**
@@ -184,5 +172,17 @@ class Tests extends \SOB\Test
 			}
 
 		return true;
+		}
+
+	/**
+	 * class must update one record with id=$id to have $to in the data
+	 */
+	public function update(int $id, int $to) : bool
+		{
+		$employee = EmployeeQuery::create()->findPK($id);
+
+		$employee->setLastName("Updated {$to}");
+
+		return $employee->save();
 		}
 	}
