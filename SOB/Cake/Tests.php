@@ -30,7 +30,12 @@ class Tests extends \SOB\Test
 	 */
 	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-		$driver = '\\Cake\\Database\\Driver\\' . \ucfirst(\strtolower($config->getDriver()));
+		$driver = \ucfirst(\strtolower($config->getDriver()));
+		if ($driver === 'Pgsql')
+			{
+			$driver = 'Postgres';
+			}
+		$driver = '\\Cake\\Database\\Driver\\' . $driver;
 
 		$run = \SOB\Cake\RunManager::get();
 		\Cake\Datasource\ConnectionManager::setConfig($run, [

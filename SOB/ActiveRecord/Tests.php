@@ -26,7 +26,7 @@ class Tests extends \SOB\Test
 	 */
 	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
-		if ('mysql' === $config->getDriver())
+		if ('sqlite' !== $config->getDriver())
 			{
 			$connectionString = $config->getDriver() . '://' . $config->getUser() . ':' . $config->getPassword() . '@' . $config->getHost() . ':' . $config->getPort() . '/' . $config->getDatabase();
 			}

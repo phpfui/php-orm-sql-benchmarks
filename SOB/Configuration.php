@@ -18,7 +18,7 @@ class Configuration
 			return $this->config['dbname'];
 			}
 
-		$database = $this->getNamespace();
+		$database = strtolower($this->getNamespace());
 
 		if ('sqlite' == $this->getDriver())
 			{
@@ -69,6 +69,10 @@ class Configuration
 		else
 			{
 			$driver .= ':host=' . $this->getHost() . ';dbname=' . $this->getDatabase() . ';port=' . $this->getPort();
+			}
+		if ('pgsql' == $driver)
+			{
+			$driver .= ':user=' . $this->getUser() . ';password=' . $this->getPassword();
 			}
 
 		return $driver;
