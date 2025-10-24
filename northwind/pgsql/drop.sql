@@ -1,0 +1,24 @@
+ALTER TABLE employee_privilege DROP CONSTRAINT fk_employee_privileges_employees1 CASCADE;
+ALTER TABLE employee_privilege DROP constraint fk_employee_privileges_privileges1 CASCADE;
+ALTER TABLE order DROP constraint fk_order_customers CASCADE;
+ALTER TABLE order DROP constraint fk_order_employee1 CASCADE;
+ALTER TABLE ORDER DROP constraint fk_order_shipper1 CASCADE;
+ALTER TABLE order DROP constraint fk_order_order_tax_status1 CASCADE;
+ALTER TABLE order DROP constraint fk_order_order_status1 CASCADE;
+ALTER TABLE product_supplier DROP constraint fk_product_supplier_product CASCADE;
+ALTER TABLE product_supplier DROP constraint fk_product_supplier_supplier CASCADE;
+ALTER TABLE purchase_order DROP constraint fk_purchase_order_employees1 CASCADE;
+ALTER TABLE purchase_order DROP constraint fk_purchase_order_purchase_order_status1 CASCADE;
+ALTER TABLE purchase_order DROP constraint fk_purchase_order_suppliers1 CASCADE;
+ALTER TABLE inventory_transaction DROP constraint fk_inventory_transactions_order1 CASCADE;
+ALTER TABLE inventory_transaction DROP constraint fk_inventory_transactions_products1 CASCADE;
+ALTER TABLE inventory_transaction DROP constraint fk_inventory_transactions_purchase_order1 CASCADE;
+ALTER TABLE inventory_transaction DROP constraint fk_inventory_transactions_inventory_transaction_type1 CASCADE;
+ALTER TABLE invoice DROP constraint fk_invoices_order1 CASCADE;
+ALTER TABLE order_detail DROP constraint fk_order_details_order1 CASCADE;
+ALTER TABLE order_detail DROP constraint fk_order_details_product1 CASCADE;
+ALTER TABLE order_detail DROP constraint fk_order_details_order_detail_status1 CASCADE;
+ALTER TABLE purchase_order_detail DROP constraint fk_purchase_order_details_inventory_transactions1 CASCADE;
+ALTER TABLE purchase_order_detail DROP constraint fk_purchase_order_details_products1 CASCADE;
+ALTER TABLE purchase_order_detail DROP constraint fk_purchase_order_details_purchase_order1 CASCADE;
+

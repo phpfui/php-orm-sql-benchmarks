@@ -47,28 +47,30 @@ abstract class Test
 		{
 		$connection = $config->getPDOConnectionString();
 
-		$sqlite = 'northwind-schema.sqlite';
-		$sql = 'northwind-schema.sql';
-
+		$schema = 'schema';
 		if ('RedBean' === $config->getNamespace())
 			{
-			$sqlite = 'northwind-schema-pkid.sqlite';
-			$sql = 'northwind-schema-pkid.sql';
+			$schema = 'schema-pkid';
 			}
 
-		if (\str_contains($connection, 'sqlite'))
-			{
-			$lines = \file(__DIR__ . '/../northwind/' . $sqlite);
+		$schema .= '.sql';
 
-			if (! \str_contains($connection, 'memory'))
-				{
-				\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
-				}
+		$file = __DIR__ . '/../northwind/' . $config->getDriver() . '/' . $schema;
+
+		if (file_exists($file))
+			{
+			$schema = $file;
 			}
 		else
 			{
-			$lines = \file(__DIR__ . '/../northwind/' . $sql);
+			$file = __DIR__ . '/../northwind/' . $schema;
 			}
+
+		if (\str_contains($connection, 'sqlite') && ! \str_contains($connection, 'memory'))
+			{
+			\fclose(\fopen($config->getNamespace() . '.sqlite', 'w'));
+			}
+		$lines = \file($file);
 
 		return $lines;
 		}

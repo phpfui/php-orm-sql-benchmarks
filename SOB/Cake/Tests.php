@@ -31,7 +31,8 @@ class Tests extends \SOB\Test
 	public function init(\SOB\Configuration $config, array $lines, \SOB\BaseLine $runTimer) : static
 		{
 		$driver = \ucfirst(\strtolower($config->getDriver()));
-		if ($driver === 'Pgsql')
+
+		if ('Pgsql' === $driver)
 			{
 			$driver = 'Postgres';
 			}

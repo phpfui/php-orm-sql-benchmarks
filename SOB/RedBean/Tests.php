@@ -17,7 +17,7 @@ class Tests extends \SOB\Test
 		{
 		$employee = $this->read($id);
 
-		return \RedBeanPHP\R::trash($employee);
+		return 1 == \RedBeanPHP\R::trash($employee);
 		}
 
 	/**

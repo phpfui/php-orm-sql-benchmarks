@@ -60,7 +60,9 @@ class Tests extends \SOB\Test
 		$employee->last_name = "Last {$id}";
 		$employee->first_name = "First {$id}";
 
-		return $employee->save();
+		$employee->save();
+
+		return $employee->employee_id;
 		}
 
 	/**
