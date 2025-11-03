@@ -53,7 +53,6 @@ class Tests extends \SOB\Test
 	public function insert(int $id) : int
 		{
 		$employee = new \SOB\PHPFUI\Record\Employee();
-		$employee->employee_id = $id;
 		$employee->company = "Company {$id}";
 		$employee->last_name = "Last {$id}";
 		$employee->first_name = "First {$id}";

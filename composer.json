@@ -17,7 +17,7 @@
     "require": {
         "php": ">=8.1",
         "phpunit/php-timer": "^8.0",
-        "phpfui/orm": "^2.0",
+        "phpfui/orm": "dev-main",
         "illuminate/database": "*",
         "illuminate/contracts": "*",
         "illuminate/events": "*",
