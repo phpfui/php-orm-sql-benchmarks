@@ -8,8 +8,9 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property string $stringDefaultNotNull MySQL type varchar(100)
  * @property ?string $stringDefaultNull MySQL type varchar(100)
  * @property ?string $stringDefaultNullable MySQL type varchar(100)
- * @property int $stringRecordId MySQL type integer
  * @property string $stringRequired MySQL type varchar(100)
+ * @property int $string_record_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\StringRecord $string_record related record
  */
 abstract class StringRecord extends \PHPFUI\ORM\Record
 	{
@@ -19,9 +20,9 @@ abstract class StringRecord extends \PHPFUI\ORM\Record
 	protected static array $fields = [];
 
 	/** @var array<string> */
-	protected static array $primaryKeys = ['stringRecordId', ];
+	protected static array $primaryKeys = ['string_record_id', ];
 
-	protected static string $table = 'stringRecord';
+	protected static string $table = 'string_record';
 
 	public function initFieldDefinitions() : static
 		{
@@ -29,10 +30,10 @@ abstract class StringRecord extends \PHPFUI\ORM\Record
 			{
 			static::$fields = [
 				'stringDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, 'default', ),
-				'stringDefaultNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, null, ),
+				'stringDefaultNull' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, ),
 				'stringDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, true, 'default', ),
-				'stringRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 				'stringRequired' => new \PHPFUI\ORM\FieldDefinition('varchar(100)', 'string', 100, false, ),
+				'string_record_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 			];
 			}
 

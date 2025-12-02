@@ -29,10 +29,10 @@ abstract class SalesReport extends \PHPFUI\ORM\Record
 			{
 			static::$fields = [
 				'default' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, 0, ),
-				'display' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'filter_row_source' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
+				'display' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'filter_row_source' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, ),
 				'group_by' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, false, ),
-				'title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'title' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
 			];
 			}
 

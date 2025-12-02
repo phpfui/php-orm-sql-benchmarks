@@ -2,8 +2,14 @@
 
 include __DIR__ . '/../../../vendor/autoload.php';
 
-$schema = new \SOB\SchemaLoader();
+//$schema = new \SOB\SchemaLoader();	this uses SQLite
 
+$settings = ['namespace' => 'PHPFUI', 'driver' => 'pgsql', 'description' => 'Postgre', 'port' => 5433, 'user' => 'postgres', 'password' => 'password'];
+
+$config = new \SOB\Configuration($settings, 0);
+$pdo = new \PHPFUI\ORM\PDOInstance($config->getPDOConnectionString(), $config->getUser(), $config->getPassword());
+
+\PHPFUI\ORM::addConnection($pdo);
 \PHPFUI\ORM::$namespaceRoot = __DIR__ . '/../../..';
 \PHPFUI\ORM::$recordNamespace = 'SOB\PHPFUI\Record';
 \PHPFUI\ORM::$tableNamespace = 'SOB\PHPFUI\Table';

@@ -8,10 +8,11 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property string $dateDefaultNotNull MySQL type date
  * @property ?string $dateDefaultNull MySQL type date
  * @property ?string $dateDefaultNullable MySQL type date
- * @property int $dateRecordId MySQL type integer
  * @property string $dateRequired MySQL type date
- * @property string $timestampDefaultCurrentNotNull MySQL type timestamp
- * @property ?string $timestampDefaultCurrentNullable MySQL type timestamp
+ * @property int $date_record_id MySQL type integer
+ * @property \SOB\PHPFUI\Record\DateRecord $date_record related record
+ * @property string $timestampDefaultCurrentNotNull MySQL type timestamp without time zone
+ * @property ?string $timestampDefaultCurrentNullable MySQL type timestamp without time zone
  */
 abstract class DateRecord extends \PHPFUI\ORM\Record
 	{
@@ -21,9 +22,9 @@ abstract class DateRecord extends \PHPFUI\ORM\Record
 	protected static array $fields = [];
 
 	/** @var array<string> */
-	protected static array $primaryKeys = ['dateRecordId', ];
+	protected static array $primaryKeys = ['date_record_id', ];
 
-	protected static string $table = 'dateRecord';
+	protected static string $table = 'date_record';
 
 	public function initFieldDefinitions() : static
 		{
@@ -31,12 +32,12 @@ abstract class DateRecord extends \PHPFUI\ORM\Record
 			{
 			static::$fields = [
 				'dateDefaultNotNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, '2000-01-02', ),
-				'dateDefaultNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, null, ),
+				'dateDefaultNull' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, ),
 				'dateDefaultNullable' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, true, '2000-01-02', ),
-				'dateRecordId' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 				'dateRequired' => new \PHPFUI\ORM\FieldDefinition('date', 'string', 10, false, ),
-				'timestampDefaultCurrentNotNull' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-				'timestampDefaultCurrentNullable' => new \PHPFUI\ORM\FieldDefinition('timestamp', 'string', 20, true, 'CURRENT_TIMESTAMP', ),
+				'date_record_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
+				'timestampDefaultCurrentNotNull' => new \PHPFUI\ORM\FieldDefinition('timestamp without time zone', 'string', 0, false, 'CURRENT_TIMESTAMP', ),
+				'timestampDefaultCurrentNullable' => new \PHPFUI\ORM\FieldDefinition('timestamp without time zone', 'string', 0, true, 'CURRENT_TIMESTAMP', ),
 			];
 			}
 

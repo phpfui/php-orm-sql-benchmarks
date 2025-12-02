@@ -17,20 +17,21 @@
     "require": {
         "php": ">=8.1",
         "phpunit/php-timer": "^8.0",
-        "phpfui/orm": "dev-main",
+        "phpfui/orm": "^3.0",
         "illuminate/database": "*",
         "illuminate/contracts": "*",
         "illuminate/events": "*",
         "cakephp/cakephp": "^5.0",
         "doctrine/orm": "^3.3",
-        "symfony/cache": "^7.2",
+        "symfony/cache": "^8.0",
         "propel/propel": "dev-master",
         "gabordemooij/redbean": "^5.7",
-        "php-patterns/activerecord": "^2.0"
+        "php-patterns/activerecord": "^2.0",
+        "symfony/var-exporter": "^7.0"
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.0",
-        "friendsofphp/php-cs-fixer": "^3.51",
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer": "*",
         "phpfui/phpunit-syntax-coverage": "^1.0"
     }
 }

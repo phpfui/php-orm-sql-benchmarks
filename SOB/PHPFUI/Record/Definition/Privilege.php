@@ -25,7 +25,7 @@ abstract class Privilege extends \PHPFUI\ORM\Record
 		if (! \count(static::$fields))
 			{
 			static::$fields = [
-				'privilege' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'privilege' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
 				'privilege_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 			];
 			}

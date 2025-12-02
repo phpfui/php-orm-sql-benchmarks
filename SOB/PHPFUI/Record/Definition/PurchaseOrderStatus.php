@@ -27,7 +27,7 @@ abstract class PurchaseOrderStatus extends \PHPFUI\ORM\Record
 			{
 			static::$fields = [
 				'purchase_order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-				'purchase_order_status_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
+				'purchase_order_status_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
 			];
 			}
 

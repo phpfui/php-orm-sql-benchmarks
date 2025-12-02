@@ -17,8 +17,8 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property ?int $purchase_order_id MySQL type integer
  * @property \SOB\PHPFUI\Record\PurchaseOrder $purchase_order related record
  * @property int $quantity MySQL type integer
- * @property string $transaction_created_date MySQL type datetime
- * @property string $transaction_modified_date MySQL type datetime
+ * @property string $transaction_created_date MySQL type timestamp with time zone
+ * @property string $transaction_modified_date MySQL type timestamp with time zone
  */
 abstract class InventoryTransaction extends \PHPFUI\ORM\Record
 	{
@@ -37,15 +37,15 @@ abstract class InventoryTransaction extends \PHPFUI\ORM\Record
 		if (! \count(static::$fields))
 			{
 			static::$fields = [
-				'comments' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, null, ),
+				'comments' => new \PHPFUI\ORM\FieldDefinition('varchar(255)', 'string', 255, true, ),
 				'inventory_transaction_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 				'inventory_transaction_type_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
 				'product_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-				'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
+				'purchase_order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
 				'quantity' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
-				'transaction_created_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
-				'transaction_modified_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'transaction_created_date' => new \PHPFUI\ORM\FieldDefinition('timestamp with time zone', 'string', 0, false, 'CURRENT_TIMESTAMP', ),
+				'transaction_modified_date' => new \PHPFUI\ORM\FieldDefinition('timestamp with time zone', 'string', 0, false, 'CURRENT_TIMESTAMP', ),
 			];
 			}
 

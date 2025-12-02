@@ -2,6 +2,6 @@
 
 namespace SOB\PHPFUI\Record;
 
-class StringRecord extends \SOB\PHPFUI\Record\Definition\StringRecord
+class Stringrecord extends \SOB\PHPFUI\Record\Definition\Stringrecord
 	{
 	}

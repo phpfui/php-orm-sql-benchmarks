@@ -10,14 +10,14 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property ?int $employee_id MySQL type integer
  * @property \SOB\PHPFUI\Record\Employee $employee related record
  * @property ?string $notes MySQL type longtext
- * @property string $order_date MySQL type datetime
+ * @property string $order_date MySQL type timestamp with time zone
  * @property int $order_id MySQL type integer
  * @property \SOB\PHPFUI\Record\Order $order related record
  * @property ?int $order_status_id MySQL type integer
  * @property \SOB\PHPFUI\Record\OrderStatus $order_status related record
  * @property ?int $order_tax_status_id MySQL type integer
  * @property \SOB\PHPFUI\Record\OrderTaxStatus $order_tax_status related record
- * @property ?string $paid_date MySQL type datetime
+ * @property ?string $paid_date MySQL type timestamp with time zone
  * @property ?string $payment_type MySQL type varchar(50)
  * @property ?string $ship_address MySQL type longtext
  * @property ?string $ship_city MySQL type varchar(50)
@@ -25,12 +25,12 @@ namespace SOB\PHPFUI\Record\Definition;
  * @property ?string $ship_name MySQL type varchar(50)
  * @property ?string $ship_state_province MySQL type varchar(50)
  * @property ?string $ship_zip_postal_code MySQL type varchar(50)
- * @property ?string $shipped_date MySQL type datetime
+ * @property ?string $shipped_date MySQL type timestamp with time zone
  * @property ?int $shipper_id MySQL type integer
  * @property \SOB\PHPFUI\Record\Shipper $shipper related record
- * @property ?float $shipping_fee MySQL type decimal(19,4)
- * @property ?float $tax_rate MySQL type double
- * @property ?float $taxes MySQL type decimal(19,4)
+ * @property ?float $shipping_fee MySQL type numeric
+ * @property ?float $tax_rate MySQL type double precision
+ * @property ?float $taxes MySQL type numeric
  */
 abstract class Order extends \PHPFUI\ORM\Record
 	{
@@ -49,26 +49,26 @@ abstract class Order extends \PHPFUI\ORM\Record
 		if (! \count(static::$fields))
 			{
 			static::$fields = [
-				'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
-				'employee_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
-				'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-				'order_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, false, 'CURRENT_TIMESTAMP', ),
+				'customer_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
+				'employee_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
+				'notes' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, ),
+				'order_date' => new \PHPFUI\ORM\FieldDefinition('timestamp with time zone', 'string', 0, false, 'CURRENT_TIMESTAMP', ),
 				'order_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, false, ),
 				'order_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, 0, ),
-				'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
-				'paid_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-				'payment_type' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'ship_address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, null, ),
-				'ship_city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'ship_country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'ship_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'ship_state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'ship_zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, null, ),
-				'shipped_date' => new \PHPFUI\ORM\FieldDefinition('datetime', 'string', 20, true, null, ),
-				'shipper_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, null, ),
-				'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
-				'tax_rate' => new \PHPFUI\ORM\FieldDefinition('double', 'float', 0, true, 0, ),
-				'taxes' => new \PHPFUI\ORM\FieldDefinition('decimal(19,4)', 'float', 19, true, 0.0000, ),
+				'order_tax_status_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
+				'paid_date' => new \PHPFUI\ORM\FieldDefinition('timestamp with time zone', 'string', 0, true, ),
+				'payment_type' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'ship_address' => new \PHPFUI\ORM\FieldDefinition('longtext', 'string', 4294967295, true, ),
+				'ship_city' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'ship_country_region' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'ship_name' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'ship_state_province' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'ship_zip_postal_code' => new \PHPFUI\ORM\FieldDefinition('varchar(50)', 'string', 50, true, ),
+				'shipped_date' => new \PHPFUI\ORM\FieldDefinition('timestamp with time zone', 'string', 0, true, ),
+				'shipper_id' => new \PHPFUI\ORM\FieldDefinition('integer', 'int', 0, true, ),
+				'shipping_fee' => new \PHPFUI\ORM\FieldDefinition('numeric', 'float', 0, true, 0.0000, ),
+				'tax_rate' => new \PHPFUI\ORM\FieldDefinition('double precision', 'float', 0, true, 0, ),
+				'taxes' => new \PHPFUI\ORM\FieldDefinition('numeric', 'float', 0, true, 0.0000, ),
 			];
 			}
 
