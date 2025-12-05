@@ -13,8 +13,9 @@ Currently benchmarked PHP ORMs include:
 
 Currently supported SQL implementations include:
 
-* [MySQL](https://www.mysql.com/)
 * [MariaDB](https://mariadb.org/)
+* [MySQL](https://www.mysql.com/)
+* [PostGre](https://www.postgresql.org/)
 * [SQLite](https://www.sqlite.org/)
 
 ## 1. Methodology
@@ -31,16 +32,17 @@ Tests can be taylored to include or exclude specific servers, orms and iteration
 * [SQLite](https://www.sqlite.org/) support
 * [MySQL](https://www.mysql.com/) support
 * [MariaDB](https://mariadb.org/) support
+* [PostGre](https://www.postgresql.org/) support
 * Any other SQL server your want to test
 
-### Installation
+### 3. Installation
 ```
 git clone https://github.com/phpfui/php-sql-orm-benchmarks.git
 cd php-sql-orm-benchmarks
 composer install
 ```
 
-### Configuration
+### 4. Configuration
 Tests are configured via the config.php file.  The *namespace* must contain a **Tests** class which extends the **\SOB\Test** abstract class.
 
 ```php
@@ -73,12 +75,27 @@ Create databases to match namespaces for each SQL server you want to test. Witho
 
 see **config.example.php** for all current tests.
 
-### Running All The Benchmarks
+### 5. Running All The Benchmarks
 ```
 php benchmark.php
 ```
 
-## 3. Results
+### 6. More Accurate Benchmarking
+The above will run all tests sequentially. but previous tests can affect subsequent tests. While this is good for debugging the test suite, in order to get a better benchmark, you should run each test individually.
+
+By passing the array offset of the test to run, you can run tests individually from the command line. For example:
+```
+php benchmark.php 0
+php benchmark.php 1
+php benchmark.php 2
+php benchmark.php 3
+php benchmark.php 4
+php benchmark.php 5
+php benchmark.php 6
+php benchmark.php 7
+```
+
+## 7. Results
 Results after each run are appended to the *results.csv* file. Delete the file to start fresh.  Use the **csvToMDTable.php** file to create a nice MarkDown table like this:
 
 |Date/Time          |System                                        |PHP  |Test      |Description    |Init Time|Init Memory|Insert Time|Insert Memory|Read Time|Read Memory|Update Time|Update Memory|Update Test Time|Update Test Memory|Random Read Time|Random Read Memory|Delete Time|Delete Memory|Total Runtime Time|Total Runtime Memory|
@@ -94,7 +111,7 @@ Results after each run are appended to the *results.csv* file. Delete the file t
 |2024-12-24 22:11:59|Windows NT 10.0 build 26100 (Windows 11) AMD64|8.4.0|PHPFUI    |sqlite::memory:|0.0097072|      71680|  0.2245116|        99184|0.1674389|       -248|  0.4470442|          832|       0.1663797|              -992|       0.0166409|               -80|  0.3135178|          -80|         1.3453434|              172712|
 |2024-12-24 22:12:00|Windows NT 10.0 build 26100 (Windows 11) AMD64|8.4.0|PHPFUI    |sqlite file    |0.4429463|       1336| 37.2659511|          608|0.5252738|       -248| 61.0093581|          832|       0.5912322|              -992|       0.0521919|               -80| 75.6630321|          -80|       175.5501097|                3792|
 
-## 4. Contributions
+## 8. Contributions
 If you are the developer or user of an ORM, data mapper, Active Record library and you want to have it included in this repo, please submit a pull-request.
 
 Slight changes to the database schema are allowed and supported as long as the new schema is functionally equivalent.
@@ -103,11 +120,11 @@ If you see something wrong about the current usage of one of the libraries, plea
 
 Please, try to implement the solutions using the most common configuration. If you want to include an optimized version of the test, create another namespace for the **Tests** class.
 
-## 5. In Progress
+## 9. In Progress
 The /inProgress directory contains non-working benchmark code that I could not get working, either due to imcompatiblies with the testing suite (the package was not sufficiently configurable), errors in the package, or my lack of understanding on how to use the package. PRs welcome to update these tests to working code.
 
-## 6. Future Enhancements
+## 10. Future Enhancements
 Artificial benchmarks can only provide so much insight into how a particular ORM performs on a particular SQL schema. Please feel free to add additional tests to further test these ORMs. Or add your favorate ORM. All PRs welcome.
 
-## 7. Disclaimer
+## 11. Disclaimer
 Inclusion or omission of any particular ORM is not an endorsement or disapproval of any ORM.
