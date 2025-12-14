@@ -35,14 +35,14 @@ Tests can be taylored to include or exclude specific servers, orms and iteration
 * [PostGre](https://www.postgresql.org/) support
 * Any other SQL server your want to test
 
-### 3. Installation
+## 3. Installation
 ```
 git clone https://github.com/phpfui/php-sql-orm-benchmarks.git
 cd php-sql-orm-benchmarks
 composer install
 ```
 
-### 4. Configuration
+## 4. Configuration
 Tests are configured via the config.php file.  The *namespace* must contain a **Tests** class which extends the **\SOB\Test** abstract class.
 
 ```php
@@ -75,12 +75,12 @@ Create databases to match namespaces for each SQL server you want to test. Witho
 
 see **config.example.php** for all current tests.
 
-### 5. Running All The Benchmarks
+## 5. Running All The Benchmarks
 ```
 php benchmark.php
 ```
 
-### 6. More Accurate Benchmarking
+## 6. More Accurate Benchmarking
 The above will run all tests sequentially. but previous tests can affect subsequent tests. While this is good for debugging the test suite, in order to get a better benchmark, you should run each test individually.
 
 By passing the array offset of the test to run, you can run tests individually from the command line. For example:
