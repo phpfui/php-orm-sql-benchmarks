@@ -48,7 +48,7 @@ class Tests extends \SOB\Test
 			'username' => $config->getUser(),
 			'password' => $config->getPassword(),
 			'database' => $config->getDatabase(),
-			'encoding' => 'utf8mb4',
+			'encoding' => 'utf8',
 			'timezone' => 'UTC',
 			'cacheMetadata' => false,
 		]);
